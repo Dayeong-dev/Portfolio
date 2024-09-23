@@ -1,0 +1,53 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    font-size: 16px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: gray;
+}
+
+main > section {
+    width: 100%;
+    height: 100vh;
+    padding-top: 80px;
+}
+
+.main {
+    background-color: salmon;
+}
+
+.myInfo {
+    background-color: sandybrown;
+}
+
+.project {
+    background-color: beige;
+}
+
+.career {
+    background-color: skyblue;
+}
+
+footer {
+    width: 100%;
+    height: 80px;
+    background-color: gray;
+}
