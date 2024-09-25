@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
      margin: 0;
      padding: 0;
@@ -7,6 +9,11 @@
 html {
     overflow: hidden;
     font-size: 16px;
+
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
 }
 
 ul, li {
@@ -15,13 +22,47 @@ ul, li {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 header {
     position: fixed;
     width: 100%;
     height: 80px;
-    background-color: gray;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0px 48px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+header nav ul {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 80px;
+}
+
+header nav ul li {
+    float: left;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+header nav ul li:hover {
+    color: #7E7E7E;
+}
+
+header nav ul li:last-child {
+    margin-right: 0px;
 }
 
 main > section {
@@ -32,18 +73,6 @@ main > section {
 
 .main {
     background-color: salmon;
-}
-
-.myInfo {
-    background-color: sandybrown;
-}
-
-.project {
-    background-color: beige;
-}
-
-.career {
-    background-color: skyblue;
 }
 
 footer {

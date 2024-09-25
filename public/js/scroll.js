@@ -5,8 +5,9 @@ window.onload = () => {
     let page = 0;
     let animated = false;
 
+    const nav = document.querySelectorAll('nav ul li');
     const main = document.querySelector('main');
-        
+
     main.addEventListener('wheel', e => {
       e.preventDefault();
       
@@ -34,4 +35,16 @@ window.onload = () => {
             });
         }
     });
+
+    for(let i = 0; i < nav.length; i++) {
+        let el = nav[i];
+
+        el.addEventListener('click', e => {
+            page = i + 1;
+            window.scroll({
+                top: window.innerHeight * page,
+                behavior: "smooth",
+            });
+        });
+    }
 }
