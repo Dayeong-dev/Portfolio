@@ -1,3 +1,51 @@
 .myInfo {
-    background-color: sandybrown;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.myInfo img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    box-shadow: 1px 1px 8px #7E7E7E;
+}
+
+.myInfo .contents {
+    width: 720px;
+    text-align: center;
+}
+
+.myInfo .contents h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.myInfo .contents h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+}
+
+.myInfo .contents > p {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 24px 0px 60px;
+}
+
+.myInfo .personalData {
+    display: flex;
+    justify-content: center;
+}
+
+.myInfo .personalData span {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 32px;
+}
+
+.myInfo .personalData span i {
+    font-size: 16px;
+    margin-right: 4px;
 }
