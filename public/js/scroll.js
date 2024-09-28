@@ -1,10 +1,10 @@
 /* 새로고침 시 스크롤 위치 복원 안함 */
 history.scrollRestoration = "manual";
 
-window.onload = () => {
-    let page = 0;
-    let animated = false;
+let page = 0;
+let animated = false;
 
+window.onload = () => {
     const nav = document.querySelectorAll('nav ul li');
     const main = document.querySelector('main');
 
@@ -48,3 +48,16 @@ window.onload = () => {
         });
     }
 }
+
+let timer = null;
+
+//Javascript
+window.addEventListener('resize', function(){
+	clearTimeout(timer);
+	timer = setTimeout(() => {
+		window.scroll({
+            top: window.innerHeight * page, 
+            behavior: "smooth",
+        });
+	}, 300);
+});
