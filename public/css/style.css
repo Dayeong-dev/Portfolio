@@ -86,5 +86,31 @@ main > section {
 footer {
     width: 100%;
     height: 80px;
-    background-color: gray;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 0px 48px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .info {
+    color: #7E7E7E;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+footer .info a:hover{
+    color: black;
+}
+
+footer .sns .logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+}
+
+footer .sns a:last-child {
+    margin-right: 0px;
 }

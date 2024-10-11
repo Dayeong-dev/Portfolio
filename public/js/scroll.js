@@ -51,8 +51,7 @@ window.onload = () => {
 
 let timer = null;
 
-//Javascript
-window.addEventListener('resize', function(){
+window.addEventListener('resize', function() {
 	clearTimeout(timer);
 	timer = setTimeout(() => {
 		window.scroll({
