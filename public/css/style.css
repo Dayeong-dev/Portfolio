@@ -7,7 +7,7 @@
 }
 
 html {
-    overflow: hidden;
+    /* overflow: hidden; */
     font-size: 16px;
 
     font-family: "Noto Sans", sans-serif;
@@ -32,6 +32,7 @@ header {
     background: #fff;
     border-bottom: 1px solid #ddd;
     padding: 0px 48px;
+    z-index: 10;
 
     display: flex;
     justify-content: space-between;

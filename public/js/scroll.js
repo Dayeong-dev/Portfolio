@@ -4,7 +4,7 @@ history.scrollRestoration = "manual";
 let page = 0;
 let animated = false;
 
-window.onload = () => {
+window.addEventListener('load', () => {
     const nav = document.querySelectorAll('nav ul li');
     const main = document.querySelector('main');
 
@@ -47,7 +47,7 @@ window.onload = () => {
             });
         });
     }
-}
+});
 
 let timer = null;
 
