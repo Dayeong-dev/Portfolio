@@ -34,7 +34,7 @@ window.addEventListener('load', () => {
                 behavior: "smooth",
             });
         }
-    });
+    }, {passive: false});
 
     for(let i = 0; i < nav.length; i++) {
         let el = nav[i];
