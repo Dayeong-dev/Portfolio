@@ -48,6 +48,7 @@
 .myInfo .personalData span i {
     font-size: 16px;
     margin-right: 4px;
+    cursor: auto;
 }
 
 .myInfo .personalData span a:hover {
