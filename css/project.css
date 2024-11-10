@@ -110,6 +110,7 @@
 
 .project .slider article.slide .inner:hover .info {
     opacity: 1;
+    cursor: pointer;
 }
 
 .project .slider article.slide .inner .info > .wrap{

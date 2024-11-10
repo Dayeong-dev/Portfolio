@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="css/myInfo.css">
     <link rel="stylesheet" href="css/project.css">
     <link rel="stylesheet" href="css/career.css">
+    <link rel="stylesheet" href="css/modal.css">
     <script src="js/scroll.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/imageSlider.js"></script>
-    <script src="https://kit.fontawesome.com/5d9ead5b59.js" crossorigin="anonymous"></script>
+    <script src="js/modal.js"></script>
+    <script src="https://kit.fontawesome.com/5d9ead5b59.js" 
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <title>Yun Dayeong</title>
 </head>
 <body>
@@ -74,7 +78,7 @@
                             <i class="fa-solid fa-circle-chevron-left"></i>
                             <i class="fa-solid fa-circle-chevron-right"></i>
                             <div class="pagination"></div>
-                            <div class="info">
+                            <div class="info" data-name="project1">
                                 <div class="wrap">
                                     <ul class="skills">
                                         <li>Javascript</li>
@@ -95,7 +99,7 @@
                             <i class="fa-solid fa-circle-chevron-left"></i>
                             <i class="fa-solid fa-circle-chevron-right"></i>
                             <div class="pagination"></div>
-                            <div class="info">
+                            <div class="info" data-name="project2">
                                 <div class="wrap">
                                     <ul class="skills">
                                         <li>Javascript</li>
@@ -119,7 +123,7 @@
                             <i class="fa-solid fa-circle-chevron-left"></i>
                             <i class="fa-solid fa-circle-chevron-right"></i>
                             <div class="pagination"></div>
-                            <div class="info">
+                            <div class="info" data-name="project3">
                                 <div class="wrap">
                                     <ul class="skills">
                                         <li>Javascript</li>
@@ -131,14 +135,6 @@
                             </div>
                         </div>
                     </article>
-                </div>
-                <div class="info">
-                    <h4 class="name">프로젝트 이름</h4>
-                    <ul>
-                        <li>Javascript</li>
-                        <li>CSS</li>
-                        <li>HTML</li>
-                    </ul>
                 </div>
                 <i class="left fa-solid fa-chevron-left"></i>
                 <i class="right fa-solid fa-chevron-right"></i>
@@ -164,5 +160,12 @@
             </a>
         </div>
     </footer>
+    <div class="modal">
+        <div class="wrap">
+            <h1 class="title">Information</h1>
+            <div id="readme" class="content"></div>
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </div>
 </body>
 </html>

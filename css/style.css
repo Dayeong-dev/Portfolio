@@ -16,11 +16,13 @@ html {
     font-variation-settings: "wdth" 100;
 }
 
-ul, li {
+/* 모달에서 Readme 출력 시, ul 태그는 기본 스타일 적용 */
+ul:not(#readme ul) {
     list-style: none;
 }
 
-a {
+/* 모달에서 Readme 출력 시, a 태그는 기본 스타일 적용 */
+a:not(#readme a[href]) {
     text-decoration: none;
     color: inherit;
 }
