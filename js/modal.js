@@ -53,8 +53,6 @@ window.addEventListener('load', () => {
 
                 let htmlContent = await htmlResponse.text();
 
-                console.log(htmlContent);
-
                 // 줄바꿈 및 링크 관련 html 태그 처리
                 htmlContent = htmlContent.replace(/<br>/g, "");
                 htmlContent = htmlContent.replace(/\n/g, "<br>");

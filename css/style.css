@@ -17,12 +17,12 @@ html {
 }
 
 /* 모달에서 Readme 출력 시, ul 태그는 기본 스타일 적용 */
-ul:not(#readme ul) {
+ul {
     list-style: none;
 }
 
 /* 모달에서 Readme 출력 시, a 태그는 기본 스타일 적용 */
-a:not(#readme a[href]) {
+a {
     text-decoration: none;
     color: inherit;
 }
