@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
     const modal = document.querySelector(".modal");
     const modalContent = modal.querySelector(".wrap .content");
     const cancel = modal.querySelector(".wrap > i");
+    const spinner = modalContent.querySelector("i.fa-spinner");
 
     for(let el of projectInfo) {
         let name = el.getAttribute("data-name");
@@ -12,6 +13,8 @@ window.addEventListener('load', () => {
         const repo = "Portfolio";   // GitHub 레포지토리 명
 
         el.addEventListener('click', () => {
+            spinner.style.display = "block";
+
             // Get a repository README
             fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, {
                 method: 'GET',
@@ -45,21 +48,24 @@ window.addEventListener('load', () => {
                     htmlContent = htmlContent.replace(/<a/g, "<a target='_blank'");
                     modalContent.innerHTML = htmlContent;
 
-                    modal.style.display = "block";
+                    spinner.style.display = "none";
                 })
                 .catch(error => {
                     console.error("README 데이터를 HTML 형식으로 변환 중 오류 발생:", error);
                     modalContent.innerText = "README 데이터를 HTML 형식으로 변환 중 오류가 발생했습니다.";
 
-                    modal.style.display = "block";
+                    spinner.style.display = "none";
                 });
             })
             .catch(error => {
                 console.error("README 데이터를 가져오는 중 오류 발생:", error);
                 modalContent.innerText = "README 데이터를 가져오는 중 오류가 발생했습니다.";
-
-                modal.style.display = "block";
+                
+                spinner.style.display = "none";
             })
+            .finally(() => {
+                modal.style.display = "block";
+            });
         });
     }
 

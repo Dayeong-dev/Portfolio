@@ -40,6 +40,10 @@
     overflow-y: auto;
 }
 
+.modal > .wrap .content > i.fa-spinner {
+    display: none;
+}
+
 /* a 태그 기본 스타일 적용 */
 .modal > .wrap .content a, 
 .modal > .wrap .content ul {
@@ -55,7 +59,7 @@
     --color-fg-default: black; 
 }
 
-.modal > .wrap > i {
+.modal > .wrap > i.fa-xmark {
     position: absolute;
     top: 24px;
     right: 24px;
