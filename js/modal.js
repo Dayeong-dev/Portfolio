@@ -8,65 +8,59 @@ window.addEventListener('load', () => {
     for(let el of projectInfo) {
         let name = el.getAttribute("data-name");
 
+        const owner = "Dayeong-dev";    // GitHub 소유자 이름
+        const repo = "Portfolio";   // GitHub 레포지토리 명
+
         el.addEventListener('click', () => {
-            getReadme("Dayeong-dev", "Node_Project");
+            // Get a repository README
+            fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, {
+                method: 'GET',
+                headers: { 
+                    'Accept': 'application/vnd.github.v3+json',
+                    'X-GitHub-Api-Version': '2022-11-28', 
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Base64 디코딩
+                const readmeContent = decodeBase64(data.content);
+
+                // Render a Markdown document
+                fetch('https://api.github.com/markdown', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json',
+                        'X-GitHub-Api-Version': '2022-11-28',
+                    },
+                    body: JSON.stringify({
+                        text: readmeContent,
+                        mode: 'gfm', // GitHub Flavored Markdown 형식으로 변환
+                        context: `${owner}/${repo}`
+                    })
+                })
+                .then(htmlResponse => htmlResponse.text())
+                .then(htmlContent => {
+                    // README 내의 링크 클릭 시, 새 탭에서 해당 링크 연결
+                    htmlContent = htmlContent.replace(/<a/g, "<a target='_blank'");
+                    modalContent.innerHTML = htmlContent;
+                    modal.style.display = "block";
+                })
+                .catch(error => {
+                    console.error("README 데이터를 HTML 형식으로 변환 중 오류 발생:", error);
+                    modalContent.innerText = "README 데이터를 HTML 형식으로 변환 중 오류가 발생했습니다.";
+                });
+            })
+            .catch(error => {
+                console.error("README 데이터를 가져오는 중 오류 발생:", error);
+                modalContent.innerText = "README 데이터를 가져오는 중 오류가 발생했습니다.";
+            });
         });
     }
 
     cancel.addEventListener('click', () => {
         modal.style.display = "none";
     });
-
-    /**
-     * Github 해당 레포지토리의 Readme 파일을 불러와 html 형태로 변경 후 modal로 출력하는 함수
-     * @param {String} owner 소유자 이름
-     * @param {String} repo 레포지토리 명
-     */
-    async function getReadme(owner, repo) {
-        try {
-            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, {
-                headers: { 
-                    'X-GitHub-Api-Version': '2022-11-28', 
-                    // 'Accept': 'application/vnd.github.v3+json'
-                }
-            });
-            const data = await response.json();
-    
-            if (data.content) {
-                // Base64 디코딩
-                const readmeContent = decodeBase64(data.content);
-
-                // Markdown을 HTML로 변환
-                const htmlResponse = await fetch('https://api.github.com/markdown', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-GitHub-Api-Version': '2022-11-28',
-                        // 'Accept': 'application/vnd.github.v3+json'
-                    },
-                    body: JSON.stringify({
-                        text: readmeContent,
-                        // mode: 'gfm', // GitHub Flavored Markdown 형식으로 변환
-                        // context: `${owner}/${repo}`
-                    })
-                });
-
-                let htmlContent = await htmlResponse.text();
-
-                // 줄바꿈 및 링크 관련 html 태그 처리
-                htmlContent = htmlContent.replace(/<br>/g, "");
-                htmlContent = htmlContent.replace(/\n/g, "<br>");
-
-                modalContent.innerHTML = htmlContent;
-            } else {
-                modalContent.innerText = "README 파일을 찾을 수 없습니다.";
-            }
-        } catch (error) {
-            console.error("Error fetching README:", error);
-            modalContent.innerText = "README를 가져오는 중 오류가 발생했습니다.";
-        }
-        modal.style.display = "block";
-    }
 
     /**
     * Base64를 UTF-8로 디코딩하는 함수

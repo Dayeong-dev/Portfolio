@@ -23,10 +23,12 @@
 - 원페이지 스크롤 구현
   * 스크롤 시 한 페이지씩 이동
   * 브라우저 높이 변경 시 화면 크기에 맞춰 페이지 자동 조정
+
 - 슬라이더 구현
   * n개의 슬라이드를 넣어도 별도의 수정없이 동작 가능
   * 첫 슬라이드에서는 이전버튼 비활성화, 마지막 슬라이드에선 다음버튼 비활성화 기능 구현
   * 이미지 슬라이더에서는 이미지 개수를 확인할 수 있는 페이지네이션 구현
+  
 - 프로젝트의 README 내용을 보여주는 모달 창 구현
   * GitHub REST API를 활용한 README 문서 데이터 호출 및 출력
   * [Get a repository README](https://docs.github.com/ko/rest/repos/contents?apiVersion=2022-11-28#get-a-repository-readme)를 통한 해당 레포지토리의 README 문서 데이터 호출
