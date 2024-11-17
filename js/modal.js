@@ -44,17 +44,22 @@ window.addEventListener('load', () => {
                     // README 내의 링크 클릭 시, 새 탭에서 해당 링크 연결
                     htmlContent = htmlContent.replace(/<a/g, "<a target='_blank'");
                     modalContent.innerHTML = htmlContent;
+
                     modal.style.display = "block";
                 })
                 .catch(error => {
                     console.error("README 데이터를 HTML 형식으로 변환 중 오류 발생:", error);
                     modalContent.innerText = "README 데이터를 HTML 형식으로 변환 중 오류가 발생했습니다.";
+
+                    modal.style.display = "block";
                 });
             })
             .catch(error => {
                 console.error("README 데이터를 가져오는 중 오류 발생:", error);
                 modalContent.innerText = "README 데이터를 가져오는 중 오류가 발생했습니다.";
-            });
+
+                modal.style.display = "block";
+            })
         });
     }
 
