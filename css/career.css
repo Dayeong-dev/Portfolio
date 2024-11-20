@@ -1,3 +1,125 @@
 .career {
-    background-color: skyblue;
+    background-color: #fff;
+}
+
+.career .container {
+    width: 100%;
+    height: 100%;
+    padding: 80px 160px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.career .container > h3 {
+    color: #000;
+    font-size: 2.25rem;
+    font-weight: 700;
+
+    margin-bottom: 60px;
+}
+
+.career .container .slider {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 20px;
+    flex-grow: 1;
+
+    font-size: 0;
+}
+
+.career .container .slider .slide {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0px 20px;
+
+    font-size: 1rem;
+    transition: transform 0.5s;
+}
+
+.career .container .slider .slide .inner {
+    display: flex;
+    gap: 120px;
+    height: 100%;
+}
+
+.career .container .slider .slide .inner .title h4.com {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+.career .container .slider .slide .inner .title .role {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.career .container .slider .slide .inner .title .period {
+    color: #7E7E7E;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.career .container .slider .slide .inner .contents {
+    flex-grow: 1;
+    min-width: 0;   /* 자식 요소가 부모 요소를 넘어가는 걸 방지 */
+}
+
+.career .container .slider .slide .inner .contents ul.works {
+    list-style: disc;
+    margin-bottom: 32px;
+
+    /* 줄바꿈 적용 */
+    word-wrap: break-all;
+    overflow-wrap: break-word;
+    white-space: wrap;
+}
+
+.career .container .slider .slide .inner .contents ul.works li {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 400;
+
+    margin-bottom: 12px;
+}
+
+.career .container .slider .slide .inner .contents ul.works li:last-child {
+    margin-bottom: 0px;
+}
+
+.career .container .slider .slide .inner .contents button.more {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 12px 24px;
+
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 12px;
+    
+    cursor: pointer;
+}
+
+.career .container .pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.career .container .pagination i {
+    color: #000;
+    font-size: 20px;
+}
+
+.career .container .pagination div.num {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 400;
 }
