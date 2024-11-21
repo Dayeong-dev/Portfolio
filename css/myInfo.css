@@ -37,12 +37,12 @@
 .myInfo .personalData {
     display: flex;
     justify-content: center;
+    gap: 32px;
 }
 
 .myInfo .personalData span {
     font-size: 1rem;
     font-weight: 400;
-    margin-left: 32px;
 }
 
 .myInfo .personalData span i {
