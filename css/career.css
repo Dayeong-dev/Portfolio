@@ -1,11 +1,15 @@
 .career {
     background-color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .career .container {
-    width: 100%;
-    height: 100%;
-    padding: 80px 160px;
+    width: 980px;
+    height: 480px;
+    /* padding: 80px 160px; */
 
     display: flex;
     flex-direction: column;
