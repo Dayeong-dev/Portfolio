@@ -68,6 +68,41 @@
     html {
         font-size: 12px;
     }
+
+    header nav {
+        position: absolute;
+        top: 80px;
+        left: 0px;
+        padding: 0px 48px;
+    
+        width: 100%;
+        height: 0px;
+        visibility: hidden;
+        overflow: hidden;
+        background: #fff;
+        border-bottom: 1px solid #ddd;
+        transition: all 0.5s;
+    }
+
+    header nav.active {
+        height: 111px;
+        visibility: visible;
+    }
+    
+    header nav ul li {
+        float: none;
+        padding: 12px 0px;
+        margin-right: 0px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    header nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    header i.fa-bars {
+        display: block;
+    }
     
     .myInfo .personalData {
         flex-direction: column;
