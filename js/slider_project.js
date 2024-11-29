@@ -2,8 +2,8 @@ window.addEventListener('load', () => {
     const slider = document.querySelector('.project .slider');
     const slides = document.querySelectorAll('.project .slide');
 
-    const btnPrev = document.querySelector('.project .container > .left');
-    const btnNext = document.querySelector('.project .container > .right');
+    const btnPrev = document.querySelector('.project .container > .fa-chevron-left');
+    const btnNext = document.querySelector('.project .container > .fa-chevron-right');
 
     const num = slides.length;
     let i = 0;

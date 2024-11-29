@@ -98,7 +98,7 @@
 
 .project .slider article.slide .inner .pagination > i.activity {
     color: #7E7E7E;
-    font-size: 8px;
+    transform: scale(1.25);
 }
 
 .project .slider article.slide .inner .info {
@@ -150,20 +150,19 @@
     transform: translateY(-50%);
 
     font-size: 40px;
-    transition: font-size 0.25s;
 }
 
 .project .container > i:hover {
     font-size: 48px;
 }
 
-.project .container > i.left {
+.project .container > i.fa-chevron-left {
     color: #ddd;
     pointer-events : none;
     left: 80px;
 }
 
-.project .container > i.right {
+.project .container > i.fa-chevron-right {
     color: #000;
     pointer-events : auto;
     right: 80px;

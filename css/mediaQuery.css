@@ -1,0 +1,106 @@
+/* 미디어 쿼리 */
+@media screen and (max-width: 1299px) {
+    .project .slider article.slide .inner {
+        width: 700px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .myInfo img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .myInfo .contents {
+        width: 600px;
+    }
+
+    .career .container {
+        width: 840px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .myInfo img {
+        display: none;
+    }
+
+    .project .slider article.slide .inner {
+        width: 77vw;
+        height: 44vw;
+    }
+
+    .project .container > i.fa-chevron-left {
+        left: 3vw;
+    }
+    
+    .project .container > i.fa-chevron-right {
+        right: 3vw;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .career .container {
+        width: 80%;
+    }
+
+    .career .container > h3 {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .career .container .slider .slide .inner {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .career .container .slider .slide .inner .contents ul.works {
+        margin-bottom: 20px;
+    }
+
+    .career .container .pagination {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 12px;
+    }
+    
+    .myInfo .personalData {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .project .slider article.slide .inner > i {
+        font-size: 12px;
+    }
+
+    .project .slider article.slide .inner .pagination > i {
+        font-size: 4px;
+    }
+
+    .project .container > i {
+        font-size: 20px;
+    }
+
+    footer {
+        justify-content: center;
+    }
+
+    footer .info {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .main {
+        padding-top: 80px;
+    }
+
+    .main > div{
+        transform: rotate(90deg);
+    }
+}

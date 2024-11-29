@@ -14,14 +14,15 @@ html {
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "wdth" 100;
+    word-break: keep-all;
+
+    min-width: 300px;
 }
 
-/* 모달에서 Readme 출력 시, ul 태그는 기본 스타일 적용 */
 ul {
     list-style: none;
 }
 
-/* 모달에서 Readme 출력 시, a 태그는 기본 스타일 적용 */
 a {
     text-decoration: none;
     color: inherit;
@@ -120,6 +121,10 @@ footer .sns .logo {
     width: 20px;
     height: 20px;
     margin-right: 4px;
+}
+
+footer .sns .logo:last-child {
+    margin-right: 0;
 }
 
 footer .sns a:last-child {
