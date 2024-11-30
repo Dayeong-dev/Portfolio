@@ -8,36 +8,8 @@ window.addEventListener('load', () => {
     const nav = document.querySelectorAll('nav ul li');
     const main = document.querySelector('main');
 
-    main.addEventListener('wheel', e => {
-        e.preventDefault();
-      
-        // 0.5초 내에 일어난 스크롤은 스크롤 한번으로 인정
-        if(!animated) {
-            animated = true;
-            setTimeout(() => {
-                animated = false;
-            }, 500);
-        
-            // 위로 스크롤 시
-            if(e.deltaY < 0) {
-                if(page === 0)
-                    return;
-                page--;
-            }
-        
-            // 아래로 스크롤 시
-            if(e.deltaY > 0) {
-                if(page === 4)
-                    return;
-                page++;
-            }
-        
-            window.scroll({
-                top: window.innerHeight * page, 
-                behavior: "smooth",
-            });
-        }
-    }, {passive: false});
+    main.addEventListener('wheel', e => handleScrollEvent(e), {passive: false});
+    main.addEventListener('touchmove', e => handleScrollEvent(e), {passive: false});
 
     // nav 메뉴 클릭 이벤트
     for(let i = 0; i < nav.length; i++) {
@@ -50,6 +22,37 @@ window.addEventListener('load', () => {
                 behavior: "smooth",
             });
         });
+    }
+
+    const handleScrollEvent = (e) => {
+        e.preventDefault();
+          
+            // 0.5초 내에 일어난 스크롤은 스크롤 한번으로 인정
+        if(!animated) {
+            animated = true;
+            setTimeout(() => {
+                animated = false;
+            }, 500);
+            
+            // 위로 스크롤 시
+            if(e.deltaY < 0) {
+                if(page === 0)
+                    return;
+                page--;
+            }
+            
+            // 아래로 스크롤 시
+            if(e.deltaY > 0) {
+                if(page === 4)
+                    return;
+                page++;
+            }
+            
+            window.scroll({
+                top: window.innerHeight * page, 
+                behavior: "smooth",
+            });
+        }
     }
 });
 
