@@ -10,6 +10,9 @@ window.addEventListener('load', () => {
     const nav = document.querySelectorAll('nav ul li');
     const main = document.querySelector('main');
 
+    // vh 동적 처리
+    adjustHeight();
+
     /* PC 스크롤 */
     main.addEventListener('wheel', e => {
         e.preventDefault();
@@ -95,12 +98,25 @@ window.addEventListener('resize', function() {
 	timer = setTimeout(() => {
         scrollEvent(page, window.innerHeight);
 	}, 300);
+
+    //vh 동적 처리
+    adjustHeight();
 });
 
-/* 윈도우 스크롤 이벤트 */
+/**
+ * 윈도우 스크롤 이벤트
+ * @param {*} p page 
+ * @param {*} h window.height
+ */
 const scrollEvent = (p, h) => {
     window.scroll({
         top: h* p, 
         behavior: "smooth",
     });
+}
+
+/* vh 동적 처리 */
+const adjustHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
