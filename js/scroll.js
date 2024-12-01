@@ -2,32 +2,19 @@
 history.scrollRestoration = "manual";
 
 let page = 0;
+let maxPage = 4;
 let animated = false;
+let lastY = 0;
 
 window.addEventListener('load', () => {
     const nav = document.querySelectorAll('nav ul li');
     const main = document.querySelector('main');
 
-    main.addEventListener('wheel', e => handleScrollEvent(e), {passive: false});
-    main.addEventListener('touchmove', e => handleScrollEvent(e), {passive: false});
-
-    // nav 메뉴 클릭 이벤트
-    for(let i = 0; i < nav.length; i++) {
-        let el = nav[i];
-
-        el.addEventListener('click', e => {
-            page = i + 1;
-            window.scroll({
-                top: window.innerHeight * page,
-                behavior: "smooth",
-            });
-        });
-    }
-
-    const handleScrollEvent = (e) => {
+    /* PC 스크롤 */
+    main.addEventListener('wheel', e => {
         e.preventDefault();
           
-            // 0.5초 내에 일어난 스크롤은 스크롤 한번으로 인정
+        // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
         if(!animated) {
             animated = true;
             setTimeout(() => {
@@ -43,16 +30,59 @@ window.addEventListener('load', () => {
             
             // 아래로 스크롤 시
             if(e.deltaY > 0) {
-                if(page === 4)
+                if(page === maxPage)
                     return;
                 page++;
             }
             
+            scrollEvent(page, window.innerHeight);
+        }
+    }, {passive: false});
+
+    /* 모바일 스크롤 */
+    main.addEventListener('touchstart', e => {
+        lastY = e.touches[0].clientY; 
+    }, {passive: false});
+    
+    main.addEventListener('touchmove', e => {
+        e.preventDefault();
+
+        // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
+        if(!animated) {
+            animated = true;
+            setTimeout(() => {
+                animated = false;
+            }, 500);
+
+            let curr = e.touches[0].clientY;
+            
+            if(lastY < curr) {
+                if(page === 0)
+                    return;
+                page--;
+            }
+
+            if(lastY > curr) {
+                if(page === maxPage)
+                    return;
+                page++;
+            }
+
+            scrollEvent(page, window.innerHeight);
+        }
+    }, {passive: false});
+
+    // nav 메뉴 클릭 이벤트
+    for(let i = 0; i < nav.length; i++) {
+        let el = nav[i];
+
+        el.addEventListener('click', e => {
+            page = i + 1;
             window.scroll({
-                top: window.innerHeight * page, 
+                top: window.innerHeight * page,
                 behavior: "smooth",
             });
-        }
+        });
     }
 });
 
@@ -62,9 +92,14 @@ let timer = null;
 window.addEventListener('resize', function() {
 	clearTimeout(timer);
 	timer = setTimeout(() => {
-		window.scroll({
-            top: window.innerHeight * page, 
-            behavior: "smooth",
-        });
+        scrollEvent(page, window.innerHeight);
 	}, 300);
 });
+
+/* 윈도우 스크롤 이벤트 */
+const scrollEvent = (p, h) => {
+    window.scroll({
+        top: h* p, 
+        behavior: "smooth",
+    });
+}
