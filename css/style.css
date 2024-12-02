@@ -19,11 +19,6 @@ html {
     min-width: 300px;
 }
 
-body {
-    touch-action: none;
-    overflow: hidden;
-}
-
 ul {
     list-style: none;
 }

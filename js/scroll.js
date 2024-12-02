@@ -14,26 +14,10 @@ window.addEventListener('load', () => {
     // vh 동적 처리
     adjustHeight();
 
-    // body 스크롤 이벤트 제거 - 카카오톡 인앱 브라우저 주소표시줄 고정을 위함
-    body.addEventListener("touchmove", e => {
-        e.preventDefault();
-        e.stopPropagation();
-    }, {passive: false});
-
-    body.addEventListener("onclick", e => {
-        e.preventDefault();
-        e.stopPropagation();
-    }, {passive: false});
-
-    body.addEventListener("mousewheel", e => {
-        e.preventDefault();
-        e.stopPropagation();
-    }, {passive: false});
-    
-
-    /* PC 스크롤 */
+    // PC - 스크롤 이벤트
     main.addEventListener('wheel', e => {
         e.preventDefault();
+        e.stopPropagation();
           
         // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
         if(!animated) {
@@ -60,16 +44,17 @@ window.addEventListener('load', () => {
         }
     }, {passive: false});
 
-    /* 모바일 스크롤 */
+    // 모바일 - 스크롤 이벤트
     main.addEventListener('touchstart', e => {
         lastY = e.touches[0].clientY; 
     }, {passive: false});
 
     main.addEventListener('touchmove', e => {
         e.preventDefault();
+        e.stopPropagation();
 
         // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
-        if(!animated) {
+        if(!animated && lastY !== 0) {
             animated = true;
             setTimeout(() => {
                 animated = false;
@@ -88,6 +73,8 @@ window.addEventListener('load', () => {
                     return;
                 page++;
             }
+
+            lastY = 0;
 
             scrollEvent(page, window.innerHeight);
         }
