@@ -20,12 +20,12 @@ window.addEventListener('load', () => {
         e.stopPropagation();
     }, {passive: false});
 
-    body.addEventListener("click", e => {
+    body.addEventListener("onclick", e => {
         e.preventDefault();
         e.stopPropagation();
     }, {passive: false});
 
-    body.addEventListener("wheel", e => {
+    body.addEventListener("mousewheel", e => {
         e.preventDefault();
         e.stopPropagation();
     }, {passive: false});
