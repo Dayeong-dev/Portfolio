@@ -7,16 +7,33 @@ let animated = false;
 let lastY = 0;
 
 window.addEventListener('load', () => {
-    const nav = document.querySelectorAll('nav ul li');
+    const body = document.querySelector('body');
     const main = document.querySelector('main');
+    const nav = document.querySelectorAll('nav ul li');
 
     // vh 동적 처리
     adjustHeight();
 
+    // body 스크롤 이벤트 제거 - 카카오톡 인앱 브라우저 주소표시줄 고정을 위함
+    body.addEventListener("touchmove", e => {
+        e.preventDefault();
+        e.stopPropagation();
+    }, {passive: false});
+
+    body.addEventListener("click", e => {
+        e.preventDefault();
+        e.stopPropagation();
+    }, {passive: false});
+
+    body.addEventListener("wheel", e => {
+        e.preventDefault();
+        e.stopPropagation();
+    }, {passive: false});
+    
+
     /* PC 스크롤 */
     main.addEventListener('wheel', e => {
         e.preventDefault();
-        e.stopPropagation();
           
         // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
         if(!animated) {
@@ -50,7 +67,6 @@ window.addEventListener('load', () => {
 
     main.addEventListener('touchmove', e => {
         e.preventDefault();
-        e.stopPropagation();
 
         // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
         if(!animated) {
