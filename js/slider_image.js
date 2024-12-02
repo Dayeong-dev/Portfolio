@@ -17,8 +17,8 @@ window.addEventListener('load', () => {
             let dot = document.createElement('i');
             dot.setAttribute('class', "fa-solid fa-circle");
 
-            // 첫 번째 dot의 class 속성에 activity 추가
-            if(i === 0) dot.classList.add("activity");
+            // 첫 번째 dot의 class 속성에 active 추가
+            if(i === 0) dot.classList.add("active");
 
             pagination.appendChild(dot);
         }
@@ -51,8 +51,8 @@ window.addEventListener('load', () => {
     // 페이지네이션 재세팅 함수
     const activition = (index, dots) => {
         for(let dot of dots) {
-            dot.classList.remove("activity");
+            dot.classList.remove("active");
         }
-        dots[index].classList.add("activity");
+        dots[index].classList.add("active");
     }
 });

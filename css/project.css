@@ -79,7 +79,7 @@
 
 .project .slider article.slide .inner .pagination {
     position: absolute;
-    top: 24px;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
 
@@ -96,9 +96,8 @@
     cursor: auto;
 }
 
-.project .slider article.slide .inner .pagination > i.activity {
+.project .slider article.slide .inner .pagination > i.active {
     color: #7E7E7E;
-    transform: scale(1.25);
 }
 
 .project .slider article.slide .inner .info {
