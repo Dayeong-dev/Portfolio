@@ -116,6 +116,8 @@ const scrollEvent = (p, h) => {
 
 /* vh 동적 처리 */
 const adjustHeight = () => {
+    document.documentElement.style.setProperty('overflow', 'hidden');
+    
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
