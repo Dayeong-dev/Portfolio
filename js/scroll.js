@@ -44,7 +44,6 @@ window.addEventListener('load', () => {
 
     /* 모바일 스크롤 */
     main.addEventListener('touchstart', e => {
-        e.preventDefault();
         lastY = e.touches[0].clientY; 
     }, {passive: false});
 
