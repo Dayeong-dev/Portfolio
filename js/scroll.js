@@ -16,6 +16,7 @@ window.addEventListener('load', () => {
     /* PC 스크롤 */
     main.addEventListener('wheel', e => {
         e.preventDefault();
+        e.stopPropagation();
           
         // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
         if(!animated) {
@@ -49,6 +50,7 @@ window.addEventListener('load', () => {
 
     main.addEventListener('touchmove', e => {
         e.preventDefault();
+        e.stopPropagation();
 
         // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
         if(!animated) {
@@ -116,8 +118,6 @@ const scrollEvent = (p, h) => {
 
 /* vh 동적 처리 */
 const adjustHeight = () => {
-    document.documentElement.style.setProperty('overflow', 'hidden');
-    
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
