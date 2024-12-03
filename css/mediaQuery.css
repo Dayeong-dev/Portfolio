@@ -139,3 +139,10 @@
         transform: rotate(90deg);
     }
 }
+
+/* 최소 높이 시 일반 스크롤 적용 */
+@media screen and (max-height: 640px) {
+    html {
+        overflow: auto;
+    }
+}
