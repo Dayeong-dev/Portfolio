@@ -140,8 +140,8 @@
     }
 }
 
-/* 최소 높이 시 일반 스크롤 적용 */
-@media screen and (max-height: 640px) {
+/* 모바일 환경 or 최소 높이 이하일 시 일반 스크롤 적용 */
+@media screen and (max-width: 767px), screen and (max-height: 640px) {
     html {
         overflow: auto;
     }
