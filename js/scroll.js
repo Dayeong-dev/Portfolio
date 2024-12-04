@@ -51,6 +51,7 @@ window.addEventListener('resize', function() {
     const currentHeight = window.innerHeight;
     if(Math.abs(currentHeight - initialHeight) <= 100)
         return;
+    initialHeight = currentHeight;  // 초기 값 갱신
     
     clearTimeout(timer);
 	timer = setTimeout(() => {
