@@ -40,7 +40,6 @@ window.addEventListener('load', () => {
 });
 
 let timer = null;
-let initialHeight = window.innerHeight;
 
 // 윈도우 높이 변경 시 해당 섹션으로 자동 스크롤
 window.addEventListener('resize', function() {
@@ -48,10 +47,8 @@ window.addEventListener('resize', function() {
     adjustHeight();
 
     // 주소표시줄로 인한 resize 이벤트 무시
-    const currentHeight = window.innerHeight;
-    if(Math.abs(currentHeight - initialHeight) <= 100)
+    if(isResizing)
         return;
-    initialHeight = currentHeight;  // 초기 값 갱신
     
     clearTimeout(timer);
 	timer = setTimeout(() => {
@@ -76,6 +73,18 @@ window.addEventListener('resize', function() {
         // 새 높이를 preHeight에 저장
         preHeight = Math.max(window.innerHeight, minHeight);
 	}, 300);
+});
+
+let isResizing = false; // 현재 스크롤 여부
+
+window.addEventListener('scroll', () => {
+  if (!isResizing) {
+    isResizing = true;
+
+    setTimeout(() => {
+      isResizing = false;
+    }, 200);
+  }
 });
 
 /**
