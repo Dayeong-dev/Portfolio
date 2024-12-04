@@ -40,11 +40,17 @@ window.addEventListener('load', () => {
 });
 
 let timer = null;
+let initialHeight = window.innerHeight;
 
 // 윈도우 높이 변경 시 해당 섹션으로 자동 스크롤
 window.addEventListener('resize', function() {
     // 모바일에서 주소 표시줄 유무 및 키보드 유무에 따라 100vh가 정확한 높이를 반영할 수 있도록 동적 처리
     adjustHeight();
+
+    // 주소표시줄로 인한 resize 이벤트 무시
+    const currentHeight = window.innerHeight;
+    if(Math.abs(currentHeight - initialHeight) <= 100)
+        return;
     
     clearTimeout(timer);
 	timer = setTimeout(() => {
