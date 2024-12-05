@@ -4,7 +4,7 @@ history.scrollRestoration = "manual";
 let page = 0;
 let maxPage = 4;
 let animated = false;
-let startY = 0;
+let startY = null;
 
 let minHeight = 680;    // 섹션의 최소 높이
 let isOnePageScroll = true;
@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
     adjustHeight();
 
     // 원 페이지 스크롤이 적용되는 환경인지 확인
-    isOnePageScroll = (overflowY !== 'auto');
+    isOnePageScroll = (overflowY !== 'scroll');
 
     // wheel 이벤트 - 원페이지 스크롤 적용(PC)
     window.addEventListener('wheel', e => {
@@ -69,7 +69,7 @@ window.addEventListener('load', () => {
     
         // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
         // touchstart 이벤트가 일어난 시점에서만 적용
-        if(!animated && startY !== 0) {
+        if(!animated && startY !== null) {
             animated = true;
             setTimeout(() => {
                 animated = false;
@@ -91,7 +91,7 @@ window.addEventListener('load', () => {
                 page++;
             }
     
-            startY = 0;
+            startY = null;
     
             scrollEvent(wrapper);
         }
@@ -133,7 +133,7 @@ window.addEventListener('resize', () => {
         const overflowY = getComputedStyle(wrapper).overflowY;
 
         // 원 페이지 스크롤이 적용되는 환경인지 확인
-        isOnePageScroll = (overflowY !== 'auto');
+        isOnePageScroll = (overflowY !== 'scroll');
 
         // 현재 페이지에 맞게 스크롤
         scrollEvent(wrapper);

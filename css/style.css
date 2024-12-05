@@ -37,7 +37,7 @@ i {
 }
 
 #wrapper {
-    overflow-y: hidden;
+    overflow-y: auto;
     height: calc(var(--vh, 1vh) * 100);
 }
 

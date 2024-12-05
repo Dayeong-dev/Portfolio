@@ -148,6 +148,6 @@
 
 @media screen and (max-height: 680px), screen and (max-width: 767px) {
     #wrapper {
-        overflow-y: auto;
+        overflow-y: scroll;
     }
 }
