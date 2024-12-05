@@ -139,3 +139,15 @@
         transform: rotate(90deg);
     }
 }
+
+@media screen and (max-height: 680px) {
+    main > section {
+        min-height: 680px;
+    }
+}
+
+@media screen and (max-height: 680px), screen and (max-width: 767px) {
+    #wrapper {
+        overflow-y: auto;
+    }
+}

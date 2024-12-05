@@ -6,17 +6,26 @@ let maxPage = 4;
 let animated = false;
 let startY = 0;
 
-let minHeight = 640;    // 섹션의 최소 높이
+let minHeight = 680;    // 섹션의 최소 높이
+let isOnePageScroll = true;
 
 window.addEventListener('load', () => {
-    const container = document.getElementById('container');
+    const wrapper = document.getElementById('wrapper');
     const nav = document.querySelectorAll('nav ul li');
+
+    const overflowY = getComputedStyle(wrapper).overflowY;
 
     // 모바일에서 주소 표시줄 유무 및 키보드 유무에 따라 100vh가 정확한 높이를 반영할 수 있도록 동적 처리
     adjustHeight();
 
+    // 원 페이지 스크롤이 적용되는 환경인지 확인
+    isOnePageScroll = (overflowY !== 'auto');
+
     // wheel 이벤트 - 원페이지 스크롤 적용(PC)
     window.addEventListener('wheel', e => {
+        // 일반 스크롤이 적용되는 환경
+        if(!isOnePageScroll) return;
+
         e.preventDefault();
         e.stopPropagation();    // 버블링 중단
           
@@ -41,7 +50,7 @@ window.addEventListener('load', () => {
                 page++;
             }
             
-            scrollEvent(container);
+            scrollEvent(wrapper);
         }
     }, {passive: false});
 
@@ -52,6 +61,9 @@ window.addEventListener('load', () => {
 
     // touchmove 이벤트 - 원페이지 스크롤 적용(모바일)
     window.addEventListener('touchmove', e => {
+        // 일반 스크롤이 적용되는 환경
+        if(!isOnePageScroll) return;
+
         e.preventDefault();
         e.stopPropagation();    // 버블링 중단
     
@@ -81,9 +93,20 @@ window.addEventListener('load', () => {
     
             startY = 0;
     
-            scrollEvent(container);
+            scrollEvent(wrapper);
         }
     }, {passive: false});
+
+    wrapper.addEventListener('scroll', e => {
+        // 뷰포트 높이 변경 시 이전 스크롤 위치에 해당되는 page 저장    // 일반 스크롤 시에만 해당
+        let sectionHeight = Math.max(window.innerHeight, minHeight);
+        let curr = Math.round(wrapper.scrollTop / sectionHeight);
+
+        if(curr === page) return;
+        if(curr < 0 || curr > maxPage - 1) return;  // 마지막 페이지인 footer는 section 높이보다 훨씬 작기 때문에 제외
+
+        page = curr;
+    })
 
     // nav 메뉴 클릭 이벤트
     for(let i = 0; i < nav.length; i++) {
@@ -91,7 +114,7 @@ window.addEventListener('load', () => {
 
         el.addEventListener('click', e => {
             page = i + 1;
-            scrollEvent(container);
+            scrollEvent(wrapper);
         });
     }
 });
@@ -100,17 +123,20 @@ let timer = null;
 let initialHeight = window.innerHeight;
 
 // 윈도우 높이 변경 시 해당 섹션으로 자동 스크롤
-window.addEventListener('resize', function() { 
+window.addEventListener('resize', () => { 
     // 모바일에서 주소 표시줄 유무 및 키보드 유무에 따라 100vh가 정확한 높이를 반영할 수 있도록 동적 처리
     adjustHeight();
 
     clearTimeout(timer);
 	timer = setTimeout(() => {
-        const container = document.getElementById('container');
+        const wrapper = document.getElementById('wrapper');
+        const overflowY = getComputedStyle(wrapper).overflowY;
+
+        // 원 페이지 스크롤이 적용되는 환경인지 확인
+        isOnePageScroll = (overflowY !== 'auto');
 
         // 현재 페이지에 맞게 스크롤
-        scrollEvent(container);
-
+        scrollEvent(wrapper);
 	}, 300);
 });
 
@@ -127,8 +153,10 @@ const adjustHeight = () => {
  * @param {*} el 스크롤 Element 
  */
 const scrollEvent = (el) => {
+    let targetScrollTop = page * Math.max(window.innerHeight, minHeight);
+
     el.scrollTo({
-        top: window.innerHeight * page, 
+        top: targetScrollTop, 
         behavior: "smooth",
     });
 }

@@ -36,18 +36,18 @@ i {
     cursor: pointer;
 }
 
-#container {
-    overflow-y: auto;
+#wrapper {
+    overflow-y: hidden;
     height: calc(var(--vh, 1vh) * 100);
 }
 
 /* 스크롤바 숨김 - Chrome, Safari, Opera */
-#container::-webkit-scrollbar {
+#wrapper::-webkit-scrollbar {
     display: none;
 }
 
 /* 스크롤바 숨김 - IE, Edge, Firefox */
-#container {
+#wrapper {
     -ms-overflow-style: none;  /* IE, Edge */
     scrollbar-width: none;  /* Firefox */
 }
@@ -106,6 +106,10 @@ main > section {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+main > section > .container {
+    margin: 20px 0px;
 }
 
 .main {
