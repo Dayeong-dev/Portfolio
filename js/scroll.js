@@ -20,7 +20,10 @@ window.addEventListener('load', () => {
     adjustHeight();
 
     // Intersection Observer 생성 및 시작
-    createObserver();
+    if(!('IntersectionObserver' in window))
+        import('intersection-observer').then(() => createObserver);
+    else
+        createObserver();
 
     // 원 페이지 스크롤이 적용되는 환경인지 확인
     isOnePageScroll = (overflowY !== 'scroll');
