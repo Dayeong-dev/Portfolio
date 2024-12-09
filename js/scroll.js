@@ -35,6 +35,9 @@ window.addEventListener('load', () => {
 
         e.preventDefault();
         e.stopPropagation();    // 버블링 중단
+
+        // overflowY 속성 값이 hidden이면 스크롤 기능 중단
+        if(getComputedStyle(wrapper).overflowY === "hidden") return;
           
         // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
         if(!animated) {
@@ -73,6 +76,9 @@ window.addEventListener('load', () => {
 
         e.preventDefault();
         e.stopPropagation();    // 버블링 중단
+
+        // overflowY 속성 값이 hidden이면 스크롤 기능 중단
+        if(getComputedStyle(wrapper).overflowY === "hidden") return;
     
         // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
         // touchstart 이벤트가 일어난 시점에서만 적용
@@ -131,6 +137,9 @@ window.addEventListener('resize', () => {
         const wrapper = document.getElementById('wrapper');
         const overflowY = getComputedStyle(wrapper).overflowY;
 
+        // resize 이벤트 진행 시 스크롤 기능 중단
+        wrapper.style.overflowY = "hidden";
+
         // 원 페이지 스크롤이 적용되는 환경인지 확인
         isOnePageScroll = (overflowY !== 'scroll');
 
@@ -138,7 +147,7 @@ window.addEventListener('resize', () => {
         scrollEvent(wrapper);
 
         let previousScrollTop = null;   // 이전 스크롤 위치
-        let num = 60;   // 최대 반복 횟수
+        let num = 120;   // 최대 반복 횟수
 
         /**
          * 스크롤 이벤트가 종료되었는지 확인하는 함수
@@ -151,6 +160,8 @@ window.addEventListener('resize', () => {
 
             // 스크롤 위치가 더 이상 변경되지 않으면 createObserver 함수 호출
             if (currentScrollTop === previousScrollTop) {
+                // resize 이벤트 종료 시 스크롤 기능 재시작
+                wrapper.style.overflowY = overflowY;
                 // Intersection Observer 재 생성 및 시작
                 createObserver();
                 return;
@@ -202,6 +213,7 @@ const createObserver = () => {
             }
         });
     }, {
+        root: document.getElementById("wrapper"),
         threshold: 0.5 // 섹션이 50% 이상 보일 때
     });
     
