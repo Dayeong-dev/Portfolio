@@ -10,6 +10,7 @@ let observer;   // Intersection Observer 저장 변수
 
 let minHeight = 680;    // 섹션의 최소 높이
 let isOnePageScroll = true;
+let isResizing = false;
 
 window.addEventListener('load', () => {
     const wrapper = document.getElementById('wrapper');
@@ -36,8 +37,8 @@ window.addEventListener('load', () => {
         e.preventDefault();
         e.stopPropagation();    // 버블링 중단
 
-        // overflowY 속성 값이 hidden이면 스크롤 기능 중단
-        if(getComputedStyle(wrapper).overflowY === "hidden") return;
+        // Resize 중이면 스크롤 기능 중단
+        if(isResizing) return;
           
         // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
         if(!animated) {
@@ -77,8 +78,8 @@ window.addEventListener('load', () => {
         e.preventDefault();
         e.stopPropagation();    // 버블링 중단
 
-        // overflowY 속성 값이 hidden이면 스크롤 기능 중단
-        if(getComputedStyle(wrapper).overflowY === "hidden") return;
+        // Resize 중이면 스크롤 기능 중단
+        if(isResizing) return;
     
         // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
         // touchstart 이벤트가 일어난 시점에서만 적용
@@ -126,6 +127,9 @@ let initialHeight = window.innerHeight;
 
 // 뷰포트 크기 변경 시 원래 위치하던 섹션으로 자동 스크롤
 window.addEventListener('resize', () => { 
+    // resize 이벤트 진행 시 스크롤 기능 중단
+    isResizing = true;
+
     // resize 시 모든 observer 종료
     if (observer) observer.disconnect();
 
@@ -136,9 +140,6 @@ window.addEventListener('resize', () => {
 	timer = setTimeout(() => {
         const wrapper = document.getElementById('wrapper');
         const overflowY = getComputedStyle(wrapper).overflowY;
-
-        // resize 이벤트 진행 시 스크롤 기능 중단
-        wrapper.style.overflowY = "hidden";
 
         // 원 페이지 스크롤이 적용되는 환경인지 확인
         isOnePageScroll = (overflowY !== 'scroll');
@@ -160,10 +161,10 @@ window.addEventListener('resize', () => {
 
             // 스크롤 위치가 더 이상 변경되지 않으면 createObserver 함수 호출
             if (currentScrollTop === previousScrollTop) {
-                // resize 이벤트 종료 시 스크롤 기능 재시작
-                wrapper.style.overflowY = overflowY;
                 // Intersection Observer 재 생성 및 시작
                 createObserver();
+                // resize 이벤트 종료 시 스크롤 기능 재시작
+                isResizing = false;
                 return;
             }
             
@@ -203,6 +204,10 @@ const scrollEvent = (el) => {
 const createObserver = () => {
     const sections = document.querySelectorAll('main > section');
 
+    // 뷰포트 높이가 minHeight 보다 작을 시 섹션과 뷰포트 높이 비율에 맞게 동적으로 threshold 적용
+    const viewportHeight = window.innerHeight;
+    const threshold = viewportHeight >= minHeight ? 0.5 : viewportHeight / minHeight
+
     // Intersection Observer 생성
     observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -214,7 +219,7 @@ const createObserver = () => {
         });
     }, {
         root: document.getElementById("wrapper"),
-        threshold: 0.5 // 섹션이 50% 이상 보일 때
+        threshold: threshold,
     });
     
     // Observer 시작
