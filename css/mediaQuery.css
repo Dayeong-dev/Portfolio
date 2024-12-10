@@ -169,7 +169,7 @@
     }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     header nav ul li:hover {
         color: #7E7E7E;
     }
