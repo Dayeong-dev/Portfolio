@@ -117,6 +117,15 @@
         font-size: 4px;
     }
 
+    .project .slider article.slide .inner .info > .wrap {
+        margin: 5%;
+    }
+
+    .project .slider article.slide .inner .info > .wrap .skills {
+        gap: 4px;
+        margin-bottom: 4px;
+    }
+
     .project .container > i {
         font-size: 20px;
     }
@@ -138,6 +147,14 @@
     .main > div{
         transform: rotate(90deg);
     }
+
+    .project .slider article.slide .inner .info > .wrap .skills {
+        font-size: 0.5rem;
+    }
+    
+    .project .slider article.slide .inner .info > .wrap .name {
+        font-size: 1.25rem;
+    }
 }
 
 @media screen and (max-height: 680px) {
@@ -152,7 +169,7 @@
     }
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     header nav ul li:hover {
         color: #7E7E7E;
     }
@@ -164,6 +181,11 @@
     .project .slider article.slide .inner > i:hover {
         background-color: rgba(0, 0, 0, 0.25);
         border-radius: 50%;
+    }
+    
+    .project .slider article.slide .inner .info {
+        opacity: 0;
+        cursor: none;
     }
 
     .project .slider article.slide .inner:hover .info {
