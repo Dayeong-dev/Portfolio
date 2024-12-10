@@ -85,9 +85,9 @@ header nav ul li {
     cursor: pointer;
 }
 
-header nav ul li:hover {
+/* header nav ul li:hover {
     color: #7E7E7E;
-}
+} */
 
 header nav ul li:last-child {
     margin-right: 0px;
@@ -142,9 +142,9 @@ footer .info {
     font-weight: 400;
 }
 
-footer .info a:hover{
+/* footer .info a:hover{
     color: black;
-}
+} */
 
 footer .sns .logo {
     width: 20px;

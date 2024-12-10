@@ -151,3 +151,31 @@
         overflow-y: scroll;
     }
 }
+
+@media (hover: hover) and (pointer: fine) {
+    header nav ul li:hover {
+        color: #7E7E7E;
+    }
+
+    .myInfo .personalData span a:hover {
+        color: #7E7E7E;
+    }
+
+    .project .slider article.slide .inner > i:hover {
+        background-color: rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+    }
+
+    .project .slider article.slide .inner:hover .info {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .project .container > i:hover {
+        font-size: 48px;
+    }
+
+    footer .info a:hover{
+        color: black;
+    }
+}
