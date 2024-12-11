@@ -29,87 +29,8 @@ window.addEventListener('load', () => {
     // 원 페이지 스크롤이 적용되는 환경인지 확인
     isOnePageScroll = (overflowY !== 'scroll');
 
-    // wheel 이벤트 - 원페이지 스크롤 적용(PC)
-    window.addEventListener('wheel', e => {
-        // 일반 스크롤이 적용되는 환경
-        if(!isOnePageScroll) return;
-
-        e.preventDefault();
-        e.stopPropagation();    // 버블링 중단
-
-        // Resize 중이면 스크롤 기능 중단
-        if(isResizing) return;
-          
-        // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
-        if(!animated) {
-            animated = true;
-            setTimeout(() => {
-                animated = false;
-            }, 500);
-            
-            // 위로 스크롤 시
-            if(e.deltaY < 0) {
-                if(page === 0)
-                    return;
-                page--;
-            }
-            
-            // 아래로 스크롤 시
-            if(e.deltaY > 0) {
-                if(page === maxPage)
-                    return;
-                page++;
-            }
-            
-            scrollEvent(wrapper);
-        }
-    }, {passive: false});
-
-    // 터치 슬라이드 방향 확인을 위한 터치 시작(touchstart) 지점 Y값 저장(모바일)
-    window.addEventListener('touchstart', e => {
-        startY = e.touches[0].clientY; 
-    }, {passive: false});
-
-    // touchmove 이벤트 - 원페이지 스크롤 적용(모바일)
-    window.addEventListener('touchmove', e => {
-        // 일반 스크롤이 적용되는 환경
-        if(!isOnePageScroll) return;
-
-        e.preventDefault();
-        e.stopPropagation();    // 버블링 중단
-
-        // Resize 중이면 스크롤 기능 중단
-        if(isResizing) return;
-    
-        // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
-        // touchstart 이벤트가 일어난 시점에서만 적용
-        if(!animated && startY !== null) {
-            animated = true;
-            setTimeout(() => {
-                animated = false;
-            }, 500);
-    
-            let curr = e.touches[0].clientY;
-            
-            // 터치 슬라이드 방향이 위에서 아래
-            if(startY < curr) {
-                if(page === 0)
-                    return;
-                page--;
-            }
-    
-            // 터치 슬라이드 방향이 아래에서 위
-            if(startY > curr) {
-                if(page === maxPage)
-                    return;
-                page++;
-            }
-    
-            startY = null;
-    
-            scrollEvent(wrapper);
-        }
-    }, {passive: false});
+    // 초기 스크롤 이벤트 등록 함수
+    initScrollEvent();
 
     // 메뉴 클릭 시 해당 섹션으로 자동 스크롤
     for(let i = 0; i < nav.length; i++) {
@@ -123,7 +44,6 @@ window.addEventListener('load', () => {
 });
 
 let timer = null;
-let initialHeight = window.innerHeight;
 
 // 뷰포트 크기 변경 시 원래 위치하던 섹션으로 자동 스크롤
 window.addEventListener('resize', () => { 
@@ -224,4 +144,110 @@ const createObserver = () => {
     
     // Observer 시작
     sections.forEach((section) => observer.observe(section));
+}
+
+const handleWheel = (e) => {
+    const wrapper = document.getElementById('wrapper');
+
+    // 일반 스크롤이 적용되는 환경
+    if(!isOnePageScroll) return;
+
+    e.preventDefault();
+    e.stopPropagation();    // 버블링 중단
+
+    // Resize 중이면 스크롤 기능 중단
+    if(isResizing) return;
+      
+    // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
+    if(!animated) {
+        animated = true;
+        setTimeout(() => {
+            animated = false;
+        }, 500);
+        
+        // 위로 스크롤 시
+        if(e.deltaY < 0) {
+            if(page === 0)
+                return;
+            page--;
+        }
+        
+        // 아래로 스크롤 시
+        if(e.deltaY > 0) {
+            if(page === maxPage)
+                return;
+            page++;
+        }
+        
+        scrollEvent(wrapper);
+    }
+}
+
+const handleTouchStart = (e) => {
+    startY = e.touches[0].clientY; 
+}
+
+const handleTouchMove = (e) => {
+    const wrapper = document.getElementById('wrapper');
+
+    // 일반 스크롤이 적용되는 환경
+    if(!isOnePageScroll) return;
+
+    e.preventDefault();
+    e.stopPropagation();    // 버블링 중단
+
+    // Resize 중이면 스크롤 기능 중단
+    if(isResizing) return;
+
+    // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
+    // touchstart 이벤트가 일어난 시점에서만 적용
+    if(!animated && startY !== null) {
+        animated = true;
+        setTimeout(() => {
+            animated = false;
+        }, 500);
+
+        let curr = e.touches[0].clientY;
+        
+        // 터치 슬라이드 방향이 위에서 아래
+        if(startY < curr) {
+            if(page === 0)
+                return;
+            page--;
+        }
+
+        // 터치 슬라이드 방향이 아래에서 위
+        if(startY > curr) {
+            if(page === maxPage)
+                return;
+            page++;
+        }
+
+        startY = null;
+
+        scrollEvent(wrapper);
+    }
+}
+
+/**
+ * 초기 스크롤 이벤트 등록 함수
+ */
+export function initScrollEvent() {
+    // wheel 이벤트 - 원페이지 스크롤 적용(PC)
+    window.addEventListener('wheel', handleWheel, {passive: false});
+
+    // 터치 슬라이드 방향 확인을 위한 터치 시작(touchstart) 지점 Y값 저장(모바일)
+    window.addEventListener('touchstart', handleTouchStart, {passive: false});
+
+    // touchmove 이벤트 - 원페이지 스크롤 적용(모바일)
+    window.addEventListener('touchmove', handleTouchMove, {passive: false});
+}
+
+/**
+ * 스크롤 이벤트 제거 함수
+ */
+export function removeScrollEvent() {
+    window.removeEventListener('wheel', handleWheel);
+    window.removeEventListener('touchstart', handleTouchStart);
+    window.removeEventListener('touchmove', handleTouchMove);
 }

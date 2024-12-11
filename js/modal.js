@@ -1,3 +1,5 @@
+import {initScrollEvent, removeScrollEvent} from './scroll.js';
+
 window.addEventListener('load', () => {
     const projectInfo = document.querySelectorAll('.project .container .slider .slide .inner .info');
 
@@ -10,9 +12,10 @@ window.addEventListener('load', () => {
         let name = el.getAttribute("data-name");
 
         const owner = "Dayeong-dev";    // GitHub 소유자 이름
-        const repo = "Portfolio";   // GitHub 레포지토리 명
+        const repo = name;   // GitHub 레포지토리 명
 
         el.addEventListener('click', () => {
+            removeScrollEvent();
             spinner.style.display = "block";
 
             // Get a repository README
@@ -70,6 +73,7 @@ window.addEventListener('load', () => {
     }
 
     cancel.addEventListener('click', () => {
+        initScrollEvent();
         modal.style.display = "none";
     });
 
