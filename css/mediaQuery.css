@@ -148,6 +148,11 @@
         transform: rotate(90deg);
     }
 
+    .main > div:after{
+        content: "DAYEONG";
+        animation: none;
+    }
+
     .project .slider article.slide .inner .info > .wrap .skills {
         font-size: 0.5rem;
     }
