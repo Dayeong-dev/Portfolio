@@ -126,7 +126,8 @@ main > section > .container {
 
 .main > div:after{
     content: "";
-    animation: animationMain 5s linear infinite;
+    animation: animationMain 3.5s linear;
+    animation-fill-mode: forwards;
 }
 
 footer {
@@ -168,71 +169,43 @@ footer .sns a:last-child {
 
 /* Animation */
 @keyframes animationMain {
-    5% {
+    10% {
         content: "D";
     }
     
-    10% {
+    20% {
         content: "DA";
     }
 
-    15% {
+    30% {
         content: "DAY"
     }
 
-    20% {
+    40% {
         content: "DAYO";
     }
 
-    25% {
+    50% {
         content: "DAY";
     }
 
-    30% {
+    60% {
         content: "DAYE";
     }
 
-    35% {
-        content: "DAYEO";
-    }
-
-    40% {
-        content: "DAYEON";
-    }
-
-    45% {
-        content: "DAYEONG";
-    }
-
-    65% {
-        content: "DAYEONG";
-    }
-
     70% {
-        content: "DAYEON";
-    }
-
-    75% {
         content: "DAYEO";
     }
 
     80% {
-        content: "DAYE";
-    }
-
-    85% {
-        content: "DAY";
+        content: "DAYEON";
     }
 
     90% {
-        content: "DA";
-    }
-
-    95% {
-        content: "D";
+        content: "DAYEONG";
     }
 
     100% {
-        content: "";
+        content: "DAYEONG";
     }
 }
