@@ -1,6 +1,6 @@
 /* 미디어 쿼리 */
-@media screen and (max-width: 1299px) {
-    .project .slider article.slide .inner {
+@media screen and (max-width: 1299px), (max-height: 820px) {
+    .project .slider article.slide .inner > .wrap {
         width: 700px;
         height: 400px;
     }
@@ -26,7 +26,7 @@
         display: none;
     }
 
-    .project .slider article.slide .inner {
+    .project .slider article.slide .inner > .wrap {
         width: 77vw;
         height: 44vw;
     }
@@ -109,21 +109,29 @@
         gap: 8px;
     }
 
-    .project .slider article.slide .inner > i {
+    .project .slider article.slide .inner > .wrap > i {
         font-size: 12px;
     }
 
-    .project .slider article.slide .inner .pagination > i {
-        font-size: 4px;
+    .project .slider article.slide .inner > .wrap .pagination {
+        gap: 4px;
+    }
+
+    .project .slider article.slide .inner > .wrap .pagination > i {
+        width: 4px;
+        height: 4px;
     }
 
     .project .slider article.slide .inner .info > .wrap {
-        margin: 5%;
+        margin: 8px;
     }
 
-    .project .slider article.slide .inner .info > .wrap .skills {
-        gap: 4px;
-        margin-bottom: 4px;
+    .project .slider article.slide .inner .info > .wrap .name {
+        margin-bottom: 0px;
+    }
+
+    .project .slider article.slide .inner .info > .wrap ul.skills {
+        column-gap: 8px;
     }
 
     .project .container > i {
@@ -153,12 +161,12 @@
         animation: none;
     }
 
-    .project .slider article.slide .inner .info > .wrap .skills {
-        font-size: 0.5rem;
-    }
-    
     .project .slider article.slide .inner .info > .wrap .name {
         font-size: 1.25rem;
+    }
+
+    .project .slider article.slide .inner .info > .wrap ul.skills {
+        font-size: 0.5rem;
     }
 }
 
@@ -183,19 +191,13 @@
         color: #7E7E7E;
     }
 
-    .project .slider article.slide .inner > i:hover {
+    .project .slider article.slide .inner > .wrap > i:hover {
         background-color: rgba(0, 0, 0, 0.25);
         border-radius: 50%;
     }
-    
-    .project .slider article.slide .inner .info {
-        opacity: 0;
-        cursor: none;
-    }
 
-    .project .slider article.slide .inner:hover .info {
-        opacity: 1;
-        cursor: pointer;
+    .project .slider article.slide .inner > .wrap:hover {
+        transform: translateY(-2%);
     }
 
     .project .container > i:hover {

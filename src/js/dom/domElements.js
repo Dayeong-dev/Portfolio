@@ -15,7 +15,7 @@ export let scrollElements = {
 
 // 모달 관련 요소
 export let modalElements = {
-    projectInfo: document.querySelectorAll('.project .container .slider .slide .inner .info'),
+    projectImageWrappers: document.querySelectorAll('.project .container .slider .slide .inner > .wrap .images'),
     modal: document.querySelector(".modal"),
     modalContent: document.querySelector(".modal .wrap .content"),
     cancel: document.querySelector(".modal .wrap > i"),
@@ -52,12 +52,12 @@ export const setImageSlideElement = () => {
 
     slides.forEach((slide, index) => {
         slideElements[index] = {
-            wrap: slide.querySelector(".inner .wrap"),
-            prevBtn: slide.querySelector(".inner .fa-circle-chevron-left"),
-            nextBtn: slide.querySelector(".inner .fa-circle-chevron-right"),
-            images: slide.querySelectorAll(".inner .wrap img"),
-            pagination: slide.querySelector(".inner .pagination"),
-            dots: slide.querySelectorAll(".inner .pagination i"),
+            prevBtn: slide.querySelector(".inner > .wrap .fa-circle-chevron-left"),
+            nextBtn: slide.querySelector(".inner > .wrap .fa-circle-chevron-right"),
+            imageWrapper: slide.querySelector(".inner > .wrap .images"),
+            imgs: slide.querySelectorAll(".inner > .wrap .images img"),
+            pagination: slide.querySelector(".inner > .wrap .pagination"),
+            dots: slide.querySelectorAll(".inner > .wrap .pagination i"),
         }
     });
     

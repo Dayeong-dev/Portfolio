@@ -120,15 +120,15 @@ const initializeImageSlider = () => {
     const slides = sliderImageElements.slides;
 
     slides.forEach((slide, index) => {
-        const {prevBtn, nextBtn, pagination, images, wrap} = sliderImageElements.slideElements[index];
+        const {prevBtn, nextBtn, pagination, imageWrapper, imgs} = sliderImageElements.slideElements[index];
 
-        const count = images.length;
+        const count = imgs.length;
         let curr = 0;
 
         // 이미지 페이지네이션 초기화
         for(let i = 0; i < count; i++) {
             let dot = document.createElement("i");
-            dot.setAttribute('class', "fa-solid fa-circle");
+            dot.setAttribute('class', "");
 
             // 첫 번째 dot의 class 속성에 active 추가
             if(i === curr) dot.classList.add("active");
@@ -142,7 +142,7 @@ const initializeImageSlider = () => {
             if(curr === 0) return;
 
             curr--;
-            wrap.style.transform = `translateX(${SLIDE_WIDTH_PERCENT * curr}%)`;
+            imageWrapper.style.transform = `translateX(${SLIDE_WIDTH_PERCENT * curr}%)`;
 
             // 페이지네이션 재세팅
             updatePaginationDots(curr, dots);
@@ -152,7 +152,7 @@ const initializeImageSlider = () => {
             if(curr === count - 1) return;
 
             curr++;
-            wrap.style.transform = `translateX(${SLIDE_WIDTH_PERCENT * curr}%)`;
+            imageWrapper.style.transform = `translateX(${SLIDE_WIDTH_PERCENT * curr}%)`;
             
             // 페이지네이션 재세팅
             updatePaginationDots(curr, dots);

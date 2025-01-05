@@ -96,10 +96,10 @@ const decodeBase64 = (base64) => {
 }
 
 const initializeModal = () => {
-    const projectInfo = modalElements.projectInfo;
+    const projectImageWrappers = modalElements.projectImageWrappers;
     const cancel = modalElements.cancel;
 
-    for(let el of projectInfo) {
+    for(let el of projectImageWrappers) {
         let name = el.getAttribute("data-name");
 
         const owner = "Dayeong-dev";    // GitHub 소유자 이름
