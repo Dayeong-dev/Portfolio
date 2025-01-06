@@ -1,11 +1,9 @@
 import { scrollElements, modalElements } from "../dom/domElements.js";
+import { debounce, throttle } from "./common.js";
 
 let page = 0;
 let maxPage = 4;
-let isScrolling = false;
 let startY = null;
-let scrollTimer = null;
-let resizeTimer = null;
 
 let observer;   // Intersection Observer 저장 변수
 
@@ -20,16 +18,17 @@ const handleWheel = (e) => {
 
     e.preventDefault();
     e.stopPropagation();    // 버블링 중단
-      
-    // 0.5초 내에 일어난 wheel 이벤트들은 한번으로 인정
-    if(isScrolling) return;
 
-    if(e.deltaY < 0 && page > 0)
-        page--;
-    if(e.deltaY > 0 && page < maxPage)
-        page++;
-        
-    adjustPage(wrapper);
+    const throttledScroll = throttle((e) => {
+        if(e.deltaY < 0 && page > 0)
+            page--;
+        if(e.deltaY > 0 && page < maxPage)
+            page++;
+            
+        adjustPage(wrapper);
+    }, 500);
+
+    throttledScroll(e);
 }
 
 const handleTouchStart = (e) => {
@@ -45,20 +44,23 @@ const handleTouchMove = (e) => {
     e.preventDefault();
     e.stopPropagation();    // 버블링 중단
 
-    // 0.5초 내에 일어난 touchmove 이벤트들은 한번으로 인정
     // touchstart 이벤트가 일어난 시점에서만 적용
-    if(isScrolling || startY === null) return;
+    if(startY === null) return;
         
-    let curr = e.touches[0].clientY;
+    const throttledScroll = throttle((e) => {
+        let curr = e.touches[0].clientY;
 
-    if(startY < curr && page > 0)
-        page--;
-    if(startY > curr && page < maxPage)
-        page++;
+        if(startY < curr && page > 0)
+            page--;
+        if(startY > curr && page < maxPage)
+            page++;
 
-    startY = null;
+        startY = null;
 
-    adjustPage(wrapper);
+        adjustPage(wrapper);
+    });
+
+    throttledScroll(e);
 }
 
 const handleResize = () => { 
@@ -70,8 +72,7 @@ const handleResize = () => {
     // 모바일에서 주소 표시줄 유무 및 키보드 유무에 따라 100vh가 정확한 높이를 반영할 수 있도록 동적 처리
     adjustHeight();
 
-    clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(() => {
+	const debouncedResize = debounce(() => {
         const wrapper = scrollElements.wrapper;
         const modal = modalElements.modal;
         const overflowY = getComputedStyle(wrapper).overflowY;
@@ -111,6 +112,8 @@ const handleResize = () => {
         // 스크롤 이벤트가 끝날 때까지 대기
         requestAnimationFrame(waitForScrollAnimation);
 	}, 300);
+
+    debouncedResize();
 }
 
 /**
@@ -119,12 +122,6 @@ const handleResize = () => {
  */
 const adjustPage = (el) => {
     const targetScrollTop = page * Math.max(window.innerHeight, minHeight);
-    
-    isScrolling = true;
-    if(scrollTimer) clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-        isScrolling = false;
-    }, 500);
 
     el.scrollTo({
         top: targetScrollTop, 
@@ -144,8 +141,6 @@ const createObserver = () => {
 
     // Intersection Observer 생성
     observer = new IntersectionObserver((entries) => {
-        if (isScrolling) return;
-
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 // 현재 위치한 섹션의 인덱스 추출 및 page 변수에 저장
