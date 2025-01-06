@@ -17,31 +17,75 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 80%;
-    height: 80%;
-    padding: 24px;
+    width: 85%;
+    height: 85%;
+    max-width: 1050px;
+    max-height: 600px;
     background: #fff;
     border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.modal > .wrap .title {
-    height: 40px;
-    border-bottom: 1px solid #ddd;
+.modal > .wrap .header {
+    width: 100%;
+    padding: 20px 20px 12px;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal > .wrap .header .title {
     color: #000;
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-.modal > .wrap .content {
-    height: calc(100% - 40px);
-    padding: 20px 0px;
+.modal > .wrap .header > i.fa-xmark {
+    color: #000;
+    font-size: 20px;
+}
 
+.modal > .wrap .content {
+    flex: 1;
+    padding: 20px 20px;
     overflow-y: auto;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .modal > .wrap .content > i.fa-spinner {
     display: none;
+}
+
+.modal > .wrap .footer {
+    padding: 12px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal > .wrap .footer .button {
+    padding: 4px 8px;
+
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.modal > .wrap .footer .button > i {
+    color: #000;
+    font-size: 1rem;
+    margin-right: 6px;
 }
 
 /* a 태그 기본 스타일 적용 */
@@ -57,13 +101,4 @@
 
     --color-canvas-default: white;
     --color-fg-default: black; 
-}
-
-.modal > .wrap > i.fa-xmark {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-
-    color: #000;
-    font-size: 20px;
 }

@@ -17,9 +17,9 @@ export let scrollElements = {
 export let modalElements = {
     projectImageWrappers: document.querySelectorAll('.project .container .slider .slide .inner > .wrap .images'),
     modal: document.querySelector(".modal"),
-    modalContent: document.querySelector(".modal .wrap .content"),
-    cancel: document.querySelector(".modal .wrap > i"),
-    spinner: document.querySelector(".modal .wrap .content i.fa-spinner"),
+    modalContent: document.querySelector(".modal > .wrap .content"),
+    cancel: document.querySelector(".modal > .wrap .header i"),
+    spinner: document.querySelector(".modal > .wrap .content i.fa-spinner"),
 };
 
 // 커리어 슬라이더 관련 요소

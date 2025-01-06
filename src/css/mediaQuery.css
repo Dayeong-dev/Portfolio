@@ -207,4 +207,8 @@
     footer .info a:hover{
         color: black;
     }
+
+    .modal > .wrap .footer .button:hover {
+        color: #7E7E7E;
+    }
 }
