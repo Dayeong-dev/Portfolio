@@ -1,4 +1,4 @@
-import { scrollElements } from "../dom/domElements.js";
+import { scrollElements, modalElements } from "../dom/domElements.js";
 
 let page = 0;
 let maxPage = 4;
@@ -73,7 +73,9 @@ const handleResize = () => {
     clearTimeout(resizeTimer);
 	resizeTimer = setTimeout(() => {
         const wrapper = scrollElements.wrapper;
+        const modal = modalElements.modal;
         const overflowY = getComputedStyle(wrapper).overflowY;
+        const isModalOpen = (getComputedStyle(modal).display === "block");
 
         // 원 페이지 스크롤이 적용되는 환경인지 확인
         isOnePageScroll = (overflowY !== 'scroll');
@@ -96,9 +98,9 @@ const handleResize = () => {
             // 스크롤 위치가 더 이상 변경되지 않으면 createObserver 함수 호출
             if (currentScrollTop === previousScrollTop) {
                 // Intersection Observer 재 생성 및 시작
-                createObserver();
-                // resize 이벤트 종료 시 스크롤 기능 재시작
-                addScrollEvent();
+                createObserver();                
+                // resize 이벤트 종료 시 모달이 켜진 상태가 아닐 때 스크롤 기능 재시작
+                if(!isModalOpen) addScrollEvent();
                 return;
             }
             
