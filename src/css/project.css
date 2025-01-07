@@ -124,7 +124,7 @@
     margin-bottom: 4px;
 }
 
-.project .slider article.slide .inner .info > .wrap ul.skills {
+.project .slider article.slide .inner .info > .wrap ul.stacks {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -136,7 +136,7 @@
     font-weight: 400;
 }
 
-.project .slider article.slide .inner .info > .wrap ul.skills li::before {
+.project .slider article.slide .inner .info > .wrap ul.stacks li::before {
     content: "#";
 }
 
