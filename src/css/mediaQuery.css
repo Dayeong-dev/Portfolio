@@ -109,6 +109,19 @@
         gap: 8px;
     }
 
+    .skills .container > h3 {
+        margin-bottom: 32px;
+    }
+
+    .skills .container .contents ul.stacks > li .icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .skills .container .contents ul.stacks > li .icon > i {
+        font-size: 60px;
+    }
+
     .project .slider article.slide .inner > .wrap > i {
         font-size: 12px;
     }

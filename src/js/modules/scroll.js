@@ -2,7 +2,7 @@ import { scrollElements, modalElements } from "../dom/domElements.js";
 import { debounce, throttle } from "./common.js";
 
 let page = 0;
-let maxPage = 4;
+let maxPage = 5;
 let startX = 0;
 let startY = 0;
 

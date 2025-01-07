@@ -1,3 +1,59 @@
 .skills {
-    background: gray;
+    background-color: #fff;
+}
+
+.skills .container {
+    width: 80%;
+    max-width: 1050px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.skills .container > h3 {
+    color: #000;
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+
+    margin-bottom: 60px;
+}
+
+.skills .container .contents ul.stacks {
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.skills .container .contents ul.stacks > li {
+    display: inline-block;
+    text-align: center;
+    margin: 12px;
+}
+
+.skills .container .contents ul.stacks > li .icon {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: #ddd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.skills .container .contents ul.stacks > li .icon > i {
+    color: #000;
+    font-size: 80px;
+    cursor: auto;
+}
+
+.skills .container .contents ul.stacks > li .name {
+    color: #000;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
