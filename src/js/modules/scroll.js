@@ -3,7 +3,8 @@ import { debounce, throttle } from "./common.js";
 
 let page = 0;
 let maxPage = 4;
-let startY = null;
+let startX = 0;
+let startY = 0;
 
 let observer;   // Intersection Observer 저장 변수
 
@@ -32,6 +33,7 @@ const handleWheel = (e) => {
 }
 
 const handleTouchStart = (e) => {
+    startX = e.touches[0].clientX;
     startY = e.touches[0].clientY; 
 }
 
@@ -45,17 +47,22 @@ const handleTouchMove = (e) => {
     e.stopPropagation();    // 버블링 중단
 
     // touchstart 이벤트가 일어난 시점에서만 적용
-    if(startY === null) return;
+    if(!startY) return;
         
     const throttledScroll = throttle((e) => {
-        let curr = e.touches[0].clientY;
+        let currX = e.touches[0].clientX;
+        let currY = e.touches[0].clientY;
 
-        if(startY < curr && page > 0)
+        // 가로로 터치 슬라이드 시 스크롤 무시 
+        if(Math.abs(startX - currX) > 10) return;
+
+        if(startY < currY && page > 0)
             page--;
-        if(startY > curr && page < maxPage)
+        if(startY > currY && page < maxPage)
             page++;
 
-        startY = null;
+        startX = 0;
+        startY = 0;
 
         adjustPage(wrapper);
     });
