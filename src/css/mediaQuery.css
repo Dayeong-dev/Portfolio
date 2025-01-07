@@ -85,7 +85,7 @@
     }
 
     header nav.active {
-        height: 111px;
+        height: 148px;  /* nav에 항목 추가 시 변경 */
         visibility: visible;
     }
     
