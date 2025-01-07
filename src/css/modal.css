@@ -57,6 +57,7 @@
 }
 
 .modal > .wrap .content > i.fa-spinner {
+    text-align: center;
     display: none;
 }
 

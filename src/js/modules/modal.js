@@ -71,10 +71,13 @@ const openModal = (owner, repo) => {
  * 모달을 닫는 함수
  */
 const closeModal = () => {
-    addScrollEvent();  // 스크롤 이벤트 재시작
-
     const modal = modalElements.modal;
+    const modalContent = modalElements.modalContent;
+
     modal.style.display = "none";
+    modalContent.innerHTML = "";
+
+    addScrollEvent();  // 스크롤 이벤트 재시작
 }
 
 /**
