@@ -109,9 +109,6 @@ main > section > .container {
 }
 
 .main {
-    color: #000;
-    font-size: 6rem;
-    font-weight: 800;
     padding-top: 0;
     background-color: #fff;
 
@@ -120,10 +117,24 @@ main > section > .container {
     align-items: center;
 }
 
-.main > div:after{
-    content: "";
-    animation: animationMain 3.5s linear;
-    animation-fill-mode: forwards;
+.main > div {
+    color: #000;
+    font-size: 6rem;
+    font-weight: 800;
+
+    animation: fade-in-up 1.5s forwards;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 footer {
@@ -160,48 +171,4 @@ footer .sns .logo:last-child {
 
 footer .sns a:last-child {
     margin-right: 0px;
-}
-
-
-/* Animation */
-@keyframes animationMain {
-    10% {
-        content: "D";
-    }
-    
-    20% {
-        content: "DA";
-    }
-
-    30% {
-        content: "DAY"
-    }
-
-    40% {
-        content: "DAYO";
-    }
-
-    50% {
-        content: "DAY";
-    }
-
-    60% {
-        content: "DAYE";
-    }
-
-    70% {
-        content: "DAYEO";
-    }
-
-    80% {
-        content: "DAYEON";
-    }
-
-    90% {
-        content: "DAYEONG";
-    }
-
-    100% {
-        content: "DAYEONG";
-    }
 }

@@ -165,12 +165,8 @@
         padding-top: 80px;
     }
 
-    .main > div{
+    .main > div {
         transform: rotate(90deg);
-    }
-
-    .main > div:after{
-        content: "DAYEONG";
         animation: none;
     }
 
