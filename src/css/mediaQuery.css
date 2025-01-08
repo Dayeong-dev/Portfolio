@@ -221,6 +221,10 @@
         font-size: 48px;
     }
 
+    .career .container .slider .slide .inner .contents button.more:hover {
+        color: var(--sub-text-color-2);
+    }
+
     footer .info a:hover{
         color: var(--text-color);
     }
