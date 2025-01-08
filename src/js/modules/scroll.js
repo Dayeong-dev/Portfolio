@@ -140,6 +140,9 @@ const adjustPage = (el) => {
  * 관찰 중인 섹션 인덱스 확인 후 page 저장 함수 (Intersection Observer API 사용) 
  */
 const createObserver = () => {
+    // 원 페이지 스크롤 일 때는 관찰 중단
+    if(isOnePageScroll) return;
+
     const sections = scrollElements.sections;
 
     // 뷰포트 높이가 minHeight 보다 작을 시 섹션과 뷰포트 높이 비율에 맞게 동적으로 threshold 적용
