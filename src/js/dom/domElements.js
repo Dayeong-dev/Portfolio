@@ -1,15 +1,20 @@
 export let commonElements = {};
 
+// 테마 관련 요소
+export let themeElements = {
+    theme_toggle: document.getElementById("theme_toggle"),
+}
+
 // 메뉴 관련 요소
 export let navbarElements = {
-    nav: document.querySelector("header nav"),
+    nav: document.querySelector("header > .wrap nav"),
     menuIcon: document.querySelector("header .fa-bars"),
 };
 
 // 스크롤 관련 요소
 export let scrollElements = {
     wrapper: document.getElementById('wrapper'),
-    nav: document.querySelectorAll('nav ul li'),
+    nav: document.querySelectorAll('header > .wrap nav ul li'),
     sections: document.querySelectorAll('main > section'), 
 };
 

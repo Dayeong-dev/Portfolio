@@ -25,13 +25,11 @@ const prevProjectSlide = () => {
     slider.style.transform = `translateX(${SLIDE_WIDTH_PERCENT * projectSliderState.currentPage}%)`;
 
     if(projectSliderState.currentPage === 0) {
-        btnPrev.style.pointerEvents = "none";
-        btnPrev.style.color = "#ddd";
+        btnPrev.classList.remove("active");
     }
 
     if(getComputedStyle(btnNext).pointerEvents === "none") {
-        btnNext.style.pointerEvents = "auto";
-        btnNext.style.color = "#000";
+        btnNext.classList.add("active");
     }
 }
 
@@ -45,13 +43,11 @@ const nextProjectSlide = () => {
     slider.style.transform = `translateX(${SLIDE_WIDTH_PERCENT * projectSliderState.currentPage}%)`;
 
     if(projectSliderState.currentPage === projectSliderState.maxPage - 1) {
-        btnNext.style.pointerEvents = "none";
-        btnNext.style.color = "#ddd";
+        btnNext.classList.remove("active");
     }
 
     if(getComputedStyle(btnPrev).pointerEvents === "none") {
-        btnPrev.style.pointerEvents = "auto";
-        btnPrev.style.color = "#000";
+        btnPrev.classList.add("active");
     }
 }
 
@@ -107,9 +103,8 @@ const initializeProjectSlider = () => {
     projectSliderState.maxPage = slides.length;
     
     // slide의 갯수가 1개일 시 오른쪽 버튼 비활성 상태로 초기화
-    if(projectSliderState.maxPage === 1) {
-        btnNext.style.pointerEvents = "none";
-        btnNext.style.color = "#ddd";
+    if(projectSliderState.maxPage > 1) {
+        btnNext.classList.add("active");
     }
 
     btnPrev.addEventListener('click', prevProjectSlide);

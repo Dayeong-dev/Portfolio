@@ -1,5 +1,5 @@
 .project {
-    background-color: #fff;
+    background-color: var(--body-bg);
 }
 
 .project .container {
@@ -33,7 +33,7 @@
 .project .slider article.slide .inner > .wrap {
     width: 980px;
     height: 560px;
-    box-shadow: 0px 0px 8px #7E7E7E;
+    box-shadow: 0px 0px 8px var(--color-gray-type1);
     overflow: hidden;
 
     transition: transform 0.3s;
@@ -54,7 +54,7 @@
     height: 100%;
     object-fit: contain;
     display: inline-block;
-    background: #000;
+    background: var(--color-black);
 }
 
 .project .slider article.slide .inner > .wrap > i {
@@ -62,9 +62,9 @@
     top: 50%;
     transform: translateY(-50%);
 
-    color: #fff;
+    color: var(--body-bg);
     font-size: 20px;
-    text-shadow: 0px 0px 4px #7E7E7E;
+    text-shadow: 0px 0px 4px var(--color-gray-type1);
     padding: 8px;
 
     z-index: 5;
@@ -93,14 +93,14 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    box-shadow: 0px 0px 4px #000;
-    background-color: #7E7E7E;
+    box-shadow: 0px 0px 4px var(--color-black);
+    background-color: var(--color-gray-type1);
 
     cursor: auto;
 }
 
 .project .slider article.slide .inner > .wrap .pagination > i.active {
-    background-color: #fff;
+    background-color: var(--color-white);
 }
 
 .project .slider article.slide .inner .info {
@@ -113,7 +113,7 @@
 }
 
 .project .slider article.slide .inner .info > .wrap {
-    color: #000;
+    color: var(--text-color);
     text-align: center;
     margin: 16px;
 }
@@ -131,7 +131,7 @@
     align-items: center;
     column-gap: 16px;
 
-    color: #7E7E7E;
+    color: var(--sub-text-color);
     font-size: 0.75rem;
     font-weight: 400;
 }
@@ -146,16 +146,19 @@
     transform: translateY(-50%);
 
     font-size: 40px;
+    color: var(--sub-text-color-2);
+    pointer-events : none;
+}
+
+.project .container > i.active {
+    color: var(--text-color);
+    pointer-events : auto;
 }
 
 .project .container > i.fa-chevron-left {
-    color: #ddd;
-    pointer-events : none;
     left: 80px;
 }
 
 .project .container > i.fa-chevron-right {
-    color: #000;
-    pointer-events : auto;
     right: 80px;
 }

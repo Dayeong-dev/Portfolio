@@ -21,7 +21,7 @@
     height: 85%;
     max-width: 1050px;
     max-height: 600px;
-    background: #fff;
+    background: var(--body-bg);
     border-radius: 16px;
 
     display: flex;
@@ -38,13 +38,13 @@
 }
 
 .modal > .wrap .header .title {
-    color: #000;
+    color: var(--text-color);
     font-size: 1.5rem;
     font-weight: 700;
 }
 
 .modal > .wrap .header > i.fa-xmark {
-    color: #000;
+    color: var(--text-color);
     font-size: 20px;
 }
 
@@ -52,8 +52,8 @@
     flex: 1;
     padding: 20px 20px;
     overflow-y: auto;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid var(--sub-text-color-2);
+    border-bottom: 1px solid var(--sub-text-color-2);
 }
 
 .modal > .wrap .content > i.fa-spinner {
@@ -72,19 +72,19 @@
 .modal > .wrap .footer .button {
     padding: 4px 8px;
 
-    color: #000;
+    color: var(--text-color);
     font-size: 1rem;
     font-weight: 700;
 
-    background: #fff;
-    border: 2px solid #000;
+    background: var(--body-bg);
+    border: 2px solid var(--text-color);
     border-radius: 8px;
 
     cursor: pointer;
 }
 
 .modal > .wrap .footer .button > i {
-    color: #000;
+    color: var(--text-color);
     font-size: 1rem;
     margin-right: 6px;
 }
@@ -97,9 +97,9 @@
 
 /* 라이트 모드 강제 적용 */
 .modal > .wrap .markdown-body {
-    background-color: white;
-    color: black;
+    background-color: var(--body-bg);
+    color: var(--text-color);
 
-    --color-canvas-default: white;
-    --color-fg-default: black; 
+    --color-canvas-default: var(--body-bg);
+    --color-fg-default: var(--text-color); 
 }

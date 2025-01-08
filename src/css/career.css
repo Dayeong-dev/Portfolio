@@ -1,5 +1,5 @@
 .career {
-    background-color: #fff;
+    background-color: var(--body-bg);
 }
 
 .career .container {
@@ -12,7 +12,7 @@
 }
 
 .career .container > h3 {
-    color: #000;
+    color: var(--text-color);
     font-size: 2.25rem;
     font-weight: 700;
 
@@ -43,10 +43,10 @@
     display: flex;
     gap: 120px;
     height: 100%;
+    color: var(--text-color);
 }
 
 .career .container .slider .slide .inner .title h4.com {
-    color: #000;
     font-size: 1.5rem;
     font-weight: 700;
 
@@ -54,13 +54,12 @@
 }
 
 .career .container .slider .slide .inner .title .role {
-    color: #000;
     font-size: 1rem;
     font-weight: 700;
 }
 
 .career .container .slider .slide .inner .title .period {
-    color: #7E7E7E;
+    color: var(--sub-text-color);
     font-size: 1rem;
     font-weight: 400;
 }
@@ -81,7 +80,6 @@
 }
 
 .career .container .slider .slide .inner .contents ul.works li {
-    color: #000;
     font-size: 1rem;
     font-weight: 400;
 
@@ -93,13 +91,13 @@
 }
 
 .career .container .slider .slide .inner .contents button.more {
-    color: #fff;
+    color: var(--body-bg);
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 700;
     padding: 12px 24px;
 
-    background: #000;
-    border: 1px solid #000;
+    background: var(--text-color);
+    border: 1px solid var(--text-color);
     border-radius: 12px;
     
     cursor: pointer;
@@ -111,15 +109,14 @@
     align-items: center;
 
     gap: 20px;
+    color: var(--text-color);
 }
 
 .career .container .pagination i {
-    color: #000;
     font-size: 20px;
 }
 
 .career .container .pagination div.num {
-    color: #000;
     font-size: 1rem;
     font-weight: 400;
 }

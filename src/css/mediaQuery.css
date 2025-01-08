@@ -69,7 +69,7 @@
         font-size: 12px;
     }
 
-    header nav {
+    header > .wrap nav {
         position: absolute;
         top: 80px;
         left: 0px;
@@ -79,25 +79,29 @@
         height: 0px;
         visibility: hidden;
         overflow: hidden;
-        background: #fff;
-        border-bottom: 1px solid #ddd;
+        background: var(--body-bg);
+        border-bottom: 1px solid var(--sub-text-color-2);
         transition: all 0.5s;
     }
 
-    header nav.active {
+    header > .wrap nav.active {
         height: 148px;  /* nav에 항목 추가 시 변경 */
         visibility: visible;
     }
     
-    header nav ul li {
+    header > .wrap nav ul li {
         float: none;
         padding: 12px 0px;
         margin-right: 0px;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--sub-text-color-2);
     }
     
-    header nav ul li:last-child {
+    header > .wrap nav ul li:last-child {
         border-bottom: none;
+    }
+
+    header > .wrap #theme_toggle {
+        display: none;
     }
 
     header i.fa-bars {
@@ -192,12 +196,16 @@
 }
 
 @media screen and (min-width: 768px) and (hover: hover) and (pointer: fine) {
-    header nav ul li:hover {
-        color: #7E7E7E;
+    header > .wrap nav ul li:hover {
+        color: var(--color-gray-type1);
+    }
+
+    header > .wrap #theme_toggle:hover{
+        background-color: var(--sub-text-color-2);
     }
 
     .myInfo .personalData span a:hover {
-        color: #7E7E7E;
+        color: var(--color-gray-type1);
     }
 
     .project .slider article.slide .inner > .wrap > i:hover {
@@ -214,10 +222,10 @@
     }
 
     footer .info a:hover{
-        color: black;
+        color: var(--text-color);
     }
 
     .modal > .wrap .footer .button:hover {
-        color: #7E7E7E;
+        color: var(--color-gray-type1);
     }
 }
