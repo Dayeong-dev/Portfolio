@@ -39,7 +39,7 @@ const initializeTheme = () => {
     setTheme();
     window.addEventListener('storage', handleTheme, false);
 
-    theme_toggle.addEventListener('click', changeTheme);
+    theme_toggle.addEventListener('click', handleTheme);
 }
 
 export {initializeTheme};
