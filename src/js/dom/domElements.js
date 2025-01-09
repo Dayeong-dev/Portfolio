@@ -3,6 +3,7 @@ export let commonElements = {};
 // 테마 관련 요소
 export let themeElements = {
     theme_toggle: document.getElementById("theme_toggle"),
+    tooltip: document.querySelector(".tooltip"),
 }
 
 // 메뉴 관련 요소

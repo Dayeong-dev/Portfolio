@@ -1,0 +1,32 @@
+.tooltip {
+    position: relative;
+}
+
+.tooltip::before {
+    visibility: hidden;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    
+    content: attr(data-before);
+    color: var(--body-bg);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--text-color);
+}
+
+.tooltip::after {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    content: '';
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 4px solid var(--text-color);
+}

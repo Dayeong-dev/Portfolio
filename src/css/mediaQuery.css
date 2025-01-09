@@ -223,4 +223,12 @@
     .modal > .wrap .footer .button:hover {
         color: var(--color-gray-type1);
     }
+
+    .tooltip:hover::before {
+        visibility: visible;
+    }
+    
+    .tooltip:hover::after {
+        visibility: visible;
+    }
 }
