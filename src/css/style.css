@@ -52,6 +52,10 @@ html, body {
     overflow: hidden;
 }
 
+body {
+    visibility: hidden; /* 초기 화면 숨김 - FOUT 문제 해결 */
+}
+
 ul {
     list-style: none;
 }
