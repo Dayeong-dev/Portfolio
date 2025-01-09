@@ -196,21 +196,12 @@
 }
 
 @media screen and (min-width: 768px) and (hover: hover) and (pointer: fine) {
-    header > .wrap nav ul li:hover {
-        color: var(--color-gray-type1);
-    }
-
-    header > .wrap #theme_toggle:hover{
-        background-color: var(--sub-text-color-2);
-    }
-
-    .myInfo .personalData span a:hover {
-        color: var(--color-gray-type1);
-    }
-
-    .project .slider article.slide .inner > .wrap > i:hover {
+    .hover-bg-change:hover {
         background-color: rgba(0, 0, 0, 0.25);
-        border-radius: 50%;
+    }
+
+    .hover-gray-text:hover {
+        color: var(--color-gray-type1);
     }
 
     .project .slider article.slide .inner > .wrap:hover {
