@@ -11,6 +11,10 @@ let observer;   // Intersection Observer 저장 변수
 let minHeight = 680;    // 섹션의 최소 높이
 let isOnePageScroll = true;
 
+let lastScrollTime = 0;
+let prevDeltaY = 0;
+let SCROLL_DELAY = 200;
+
 const handleWheel = (e) => {
     const wrapper = scrollElements.wrapper;
 
@@ -20,16 +24,36 @@ const handleWheel = (e) => {
     e.preventDefault();
     e.stopPropagation();    // 버블링 중단
 
-    const throttledScroll = throttle((e) => {
-        if(e.deltaY < 0 && page > 0)
-            page--;
-        if(e.deltaY > 0 && page < maxPage)
-            page++;
-            
-        adjustPage(wrapper);
-    }, 500);
+    if(Date.now() - lastScrollTime > SCROLL_DELAY) {
+        if((Math.abs(prevDeltaY) < Math.abs(e.deltaY))) {
+            if(e.deltaY < 0 && page > 0) {
+                page--;
+            }
+            else if(e.deltaY > 0 && page < maxPage) {
+                page++;
+            }
+    
+            adjustPage(wrapper);
+            prevDeltaY = 0; // 초기화
+        }
+    }
 
-    throttledScroll(e);
+    // 터치패드 사용 시 wheel 값이 줄어드는 중에는 timer 갱신 X
+    if(Math.abs(prevDeltaY) < Math.abs(e.deltaY)) {
+        lastScrollTime = Date.now();
+    }
+    prevDeltaY = e.deltaY;
+
+    // const throttledScroll = throttle((e) => {
+    //     if(e.deltaY < 0 && page > 0)
+    //         page--;
+    //     if(e.deltaY > 0 && page < maxPage)
+    //         page++;
+            
+    //     adjustPage(wrapper);
+    // }, 500);
+
+    // throttledScroll(e);
 }
 
 const handleTouchStart = (e) => {
