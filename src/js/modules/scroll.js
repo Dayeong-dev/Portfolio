@@ -13,7 +13,7 @@ let isOnePageScroll = true;
 
 let lastScrollTime = 0;
 let prevDeltaY = 0;
-let SCROLL_DELAY = 200;
+let SCROLL_DELAY = 300;
 
 const handleWheel = (e) => {
     const wrapper = scrollElements.wrapper;
@@ -24,36 +24,26 @@ const handleWheel = (e) => {
     e.preventDefault();
     e.stopPropagation();    // 버블링 중단
 
-    if(Date.now() - lastScrollTime > SCROLL_DELAY) {
-        if((Math.abs(prevDeltaY) < Math.abs(e.deltaY))) {
+    if((Math.abs(e.deltaY) > 4) && (Math.abs(prevDeltaY) < Math.abs(e.deltaY))) {
+        if(Date.now() - lastScrollTime > SCROLL_DELAY) {
             if(e.deltaY < 0 && page > 0) {
                 page--;
             }
             else if(e.deltaY > 0 && page < maxPage) {
                 page++;
             }
-    
             adjustPage(wrapper);
-            prevDeltaY = 0; // 초기화
         }
-    }
-
-    // 터치패드 사용 시 wheel 값이 줄어드는 중에는 timer 갱신 X
-    if(Math.abs(prevDeltaY) < Math.abs(e.deltaY)) {
         lastScrollTime = Date.now();
     }
     prevDeltaY = e.deltaY;
 
-    // const throttledScroll = throttle((e) => {
-    //     if(e.deltaY < 0 && page > 0)
-    //         page--;
-    //     if(e.deltaY > 0 && page < maxPage)
-    //         page++;
-            
-    //     adjustPage(wrapper);
-    // }, 500);
+    // 일정 시간 wheel 이벤트 호출 없을 시 prevDeltaY 값 초기화 
+    const debouncedScroll = debounce(() => {
+        prevDeltaY = 0;
+    }, SCROLL_DELAY);
 
-    // throttledScroll(e);
+    debouncedScroll();
 }
 
 const handleTouchStart = (e) => {
