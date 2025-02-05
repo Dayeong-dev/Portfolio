@@ -184,16 +184,20 @@
 }
 
 @media screen and (max-height: 680px) {
+    #wrapper {
+        overflow-y: scroll;
+    }
+
     main > section {
         min-height: 680px;
     }
 }
 
-@media screen and (max-height: 680px), screen and (max-width: 767px) {
+/* @media screen and (max-height: 680px), screen and (max-width: 767px) {
     #wrapper {
         overflow-y: scroll;
     }
-}
+} */
 
 @media screen and (min-width: 768px) and (hover: hover) and (pointer: fine) {
     .hover-bg-change:hover {
