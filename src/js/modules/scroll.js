@@ -215,6 +215,9 @@ const initializeScroll = () => {
     const nav = scrollElements.nav;
     const overflowY = getComputedStyle(wrapper).overflowY;
 
+    // 원 페이지 스크롤이 적용되는 환경인지 확인
+    isOnePageScroll = (overflowY !== 'scroll');
+    
     // Intersection Observer 생성 및 시작
     if(!('IntersectionObserver' in window))
         import('intersection-observer').then(() => createObserver);
@@ -225,9 +228,6 @@ const initializeScroll = () => {
     adjustHeight();
     // 초기 스크롤 이벤트 등록 함수
     addScrollEvent();
-
-    // 원 페이지 스크롤이 적용되는 환경인지 확인
-    isOnePageScroll = (overflowY !== 'scroll');
 
     // 메뉴 클릭 시 해당 섹션으로 자동 스크롤
     for(let i = 0; i < nav.length; i++) {
