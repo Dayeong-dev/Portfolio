@@ -142,7 +142,7 @@ header > .wrap #theme_toggle {
     align-items: center;
 }
 
-header i.fa-bars {
+header i.menu {
     color: var(--text-color);
     font-size: 16px;
     display: none;

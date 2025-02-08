@@ -9,7 +9,7 @@ export let themeElements = {
 // 메뉴 관련 요소
 export let navbarElements = {
     nav: document.querySelector("header > .wrap nav"),
-    menuIcon: document.querySelector("header .fa-bars"),
+    menuIcon: document.querySelector("header > i.menu"),
 };
 
 // 스크롤 관련 요소
