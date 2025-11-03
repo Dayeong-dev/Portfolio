@@ -89,6 +89,13 @@
     margin-right: 6px;
 }
 
+/* table 태그 테마 적용 */
+.modal > .wrap .markdown-body th, 
+.modal > .wrap .markdown-body td {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+}
+
 /* a 태그 기본 스타일 적용 */
 .modal > .wrap .content a, 
 .modal > .wrap .content ul {
