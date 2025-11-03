@@ -44,6 +44,8 @@ const openModal = (owner, repo) => {
         })
         .then(htmlResponse => htmlResponse.text())
         .then(htmlContent => {
+            htmlContent = htmlContent.replace(/href="/g, `href="https://raw.githubusercontent.com/${owner}/${repo}/main/`);
+            htmlContent = htmlContent.replace(/src="/g, `src="https://raw.githubusercontent.com/${owner}/${repo}/main/`);
             htmlContent = htmlContent.replace(/<a/g, "<a target='_blank'"); // a 태그 클릭 시, 새 탭에서 해당 링크 연결
             modalContent.innerHTML = htmlContent;
 
