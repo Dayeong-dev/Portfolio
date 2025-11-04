@@ -3,6 +3,7 @@ import { initializeNav } from "./modules/nav.js";
 import { initializeScroll } from "./modules/scroll.js";
 import { initializeModal } from "./modules/modal.js";
 import { initializeProjectSlider, initializeImageSlider, initializeCareerSlider } from "./modules/slider.js";
+import { initializeMouseEvent } from "./modules/mouseEvent.js";
 
 initializeTheme();
 initializeNav();
@@ -11,3 +12,4 @@ initializeModal();
 initializeProjectSlider();
 initializeImageSlider();
 initializeCareerSlider();
+initializeMouseEvent();

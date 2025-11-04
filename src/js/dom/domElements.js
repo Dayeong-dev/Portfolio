@@ -72,3 +72,8 @@ export const setImageSlideElement = () => {
 }
 
 setImageSlideElement();
+
+// 마우스 이벤트 관련 요소
+export let mouseEventElements = {
+    circles: document.querySelectorAll('.circle'),
+}
