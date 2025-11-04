@@ -46,6 +46,11 @@
     color: var(--text-color);
 }
 
+.career .container .slider .slide .inner .title {
+    max-width: 11rem;
+    text-wrap: wrap;
+}
+
 .career .container .slider .slide .inner .title h4.com {
     font-size: 1.5rem;
     font-weight: 700;
