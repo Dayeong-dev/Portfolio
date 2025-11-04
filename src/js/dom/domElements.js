@@ -73,6 +73,11 @@ export const setImageSlideElement = () => {
 
 setImageSlideElement();
 
+// GIF 이미지 Lazy 출력 이벤트 관련 요소
+export let lazyImageElements = {
+    gifs: document.querySelectorAll('.lazy-gif'), 
+}
+
 // 마우스 이벤트 관련 요소
 export let mouseEventElements = {
     circles: document.querySelectorAll('.circle'),
