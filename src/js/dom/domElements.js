@@ -24,6 +24,7 @@ export let modalElements = {
     projectImageWrappers: document.querySelectorAll('.project .container .slider .slide .inner > .wrap .images'),
     modal: document.querySelector(".modal"),
     modalContent: document.querySelector(".modal > .wrap .content"),
+    footer: document.querySelector(".modal > .wrap .footer"), 
     cancel: document.querySelector(".modal > .wrap .header i"),
     spinner: document.querySelector(".modal > .wrap .content i.fa-spinner"),
 };

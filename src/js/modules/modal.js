@@ -6,12 +6,13 @@ import { addScrollEvent, removeScrollEvent } from "./scroll.js";
  * @param {String} owner 깃허브 소유자
  * @param {String} repo 깃허브 레포지토리 명
  */
-const openModal = (owner, repo) => {
+const openModal = (owner, repo, url = null) => {
     removeScrollEvent();    // 스크롤 이벤트 중단
 
     const spinner = modalElements.spinner;
     const modal = modalElements.modal;
     const modalContent = modalElements.modalContent;
+    const footer = modalElements.footer;
 
     spinner.style.display = "block";
 
@@ -57,6 +58,15 @@ const openModal = (owner, repo) => {
 
             spinner.style.display = "none";
         });
+
+        // 모달 footer 세팅
+        footer.innerHTML = "";      // 초기화
+        if(url !== null) {
+                    
+
+            footer.innerHTML += `<a href="${url}" class="button" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i>Visit site</a>`;
+        }
+        footer.innerHTML += `<a href="https://github.com/${owner}/${repo}" class="button" target="_blank"><i class="fa-brands fa-github"></i>Github</a>`;
     })
     .catch(error => {
         console.error("README 데이터를 가져오는 중 오류 발생:", error);
@@ -106,11 +116,12 @@ const initializeModal = () => {
 
     for(let el of projectImageWrappers) {
         let name = el.getAttribute("data-name");
+        let url = el.getAttribute("data-url");
 
         const owner = "Dayeong-dev";    // GitHub 소유자 이름
         const repo = name;   // GitHub 레포지토리 명
 
-        el.addEventListener('click', () => openModal(owner, repo));
+        el.addEventListener('click', () => openModal(owner, repo, url));
     }
     cancel.addEventListener('click', closeModal);
 }

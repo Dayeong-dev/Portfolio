@@ -212,9 +212,9 @@
         transform: translateY(-2%);
     }
 
-    .project .container > i:hover {
+    /* .project .container > i:hover {
         font-size: 48px;
-    }
+    } */
 
     .career .container .slider .slide .inner .contents button.more:hover {
         color: var(--sub-text-color-2);
