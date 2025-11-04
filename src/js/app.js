@@ -12,4 +12,4 @@ initializeModal();
 initializeProjectSlider();
 initializeImageSlider();
 initializeCareerSlider();
-initializeMouseEvent();
+// initializeMouseEvent();
