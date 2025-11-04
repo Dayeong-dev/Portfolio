@@ -181,21 +181,19 @@ main > section > .container {
     font-size: 6rem;
     font-weight: 800;
 
-    animation: tracking-in 0.8s forwards;
+    animation: fade-in-up 1.5s forwards;
 }
 
-@keyframes tracking-in {
-  0% {
-    letter-spacing: 1em;
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.6;
-  }
-  100% {
-    letter-spacing: normal;
-    opacity: 1;
-  }
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 footer {
